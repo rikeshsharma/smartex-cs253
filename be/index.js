@@ -17,7 +17,7 @@ exports.handler = (event, context, callback) => {
     
     //if(method == "POST" && queryType == "updateAdmin") updateAdmin(event, callback);
     
-    
+    if(method == "POST" && queryType == "getAllMovement") getAllMovement(event, callback);
         
     if(method == "POST" && queryType == "addUser") addUser(event, callback);
     
@@ -53,6 +53,26 @@ exports.handler = (event, context, callback) => {
 
     
 };
+function getAllMovement(event, callback){
+    //let type = JSON.parse(event.type);
+   // const type = event.type
+
+  // app will request all user data or single user data
+  //if (type === "all") {
+    var params = {
+      TableName: "smartex-movement-table",
+    };
+
+    docClient.scan(params, function (err, data) {
+      if (err) {
+        console.error("Unable to add admin data. Error JSON:", JSON.stringify(err, null, 2));
+        callback(null, JSON.stringify(err, null, 2));// an error occurred;
+      } else {
+        console.log(data); // successful response
+        callback(null, {"statusCode":200, "body":JSON.stringify(data, null, 2)});
+      }
+    });
+  }
 
 const addAdmin = (event, callback) => {
 
