@@ -11,45 +11,63 @@ function getData(){
         .then(response => response.json())
         .then(data => {
             // Handle success or error response from server
-            console.log(data.Items.length);
+            console.log(data);
+            let tab = ``;
+            const tbody = document.querySelector("tbody");
+            console.log('asdfsdf123');
+            console.log(typeof(data.Items[0].rollno));
             for(let i=0;i<data.Items.length; ++i){
-              if (typeof data.Items[i].address == 'undefined'){
-                document.getElementById("place").innerHTML = '';    
-              }
-              else{
-                document.getElementById("place").innerHTML = data.Items[i].address;
-              }
-              if (typeof data.Items[i].name == 'undefined'){
-                document.getElementById("name").innerHTML = '';
-              }
-              else {
-                document.getElementById("name").innerHTML = data.Items[i].name;
-              }
-              if(typeof data.Items[i].rollno == 'undefined'){
-                document.getElementById("roll").innerHTML = '';    
-              }
-              else {
-                document.getElementById("roll").innerHTML = data.Items[i].rollno;
-              }
-              if( typeof data.Items[i].exitTime == 'undefined'){
-                document.getElementById("outTime").innerHTML = '';
-              }
-              else{
-                document.getElementById("outTime").innerHTML = data.Items[i].exitTime;
-              }
-              if(typeof data.Items[i].roomno == 'undefined'){
-                document.getElementById("room").innerHTML = '';
-              }
-              else{
-                document.getElementById("room").innerHTML = data.Items[i].roomno;
-              }
-              if(typeof data.Items[i].hallno == 'undefined'){
-                document.getElementById("hall").innerHTML = '';
-              }
-              else{
-                document.getElementById("hall").innerHTML = data.Items[i].hallno;
-              }
+              
+                
+                 tab += `<tr><td>${i+1}</td>`;
+                
+                
+                if (typeof data.Items[i].rollno == 'undefined'){
+                  // table.rows[i+1].cells[j].innerHTML = '';
+                  tab += `<td>${''}</td>`;
+
+                }
+                else if (typeof data.Items[i].rollno != 'undefined' ){
+                  // table.rows[i+1].cells[j].innerHTML = data.Items[i].name.concat('/ ',data.Items[i].rollno);
+                  let temp = data.Items[i].rollno.toString();
+                  tab += `<td>${temp.concat('/ ',data.Items[i].name)}</td>`;
+                  // tab += `<td>${''}</td>`;
+                  
+                }
+                if(typeof data.Items[i].roomno == 'undefined'){
+                  tab += `<td>${''}</td>`;
+                  // table.rows[i+1].cells[j].innerHTML = '';
+                  
+                }
+                else if (typeof data.Items[i].roomno != 'undefined' ){
+                  // table.rows[i+1].cells[j].innerHTML = data.Items[i].roomno.concat('/',data.Items[i].hallno);
+                  tab += `<td>${data.Items[i].roomno.concat('/',data.Items[i].hallno)}</td>`;
+                  
+                }
+                if (typeof data.Items[i].address == 'undefined'){
+                  // table.rows[i+1].cells[j].innerHTML = '';  
+                  tab += `<td>${''}</td>`;
+                  
+                }
+                else if (typeof data.Items[i].address != 'undefined'){
+                  // table.rows[i+1].cells[j].innerHTML = data.Items[i].address;
+                  tab += `<td>${data.Items[i].address}</td>`;
+                }
+                if( typeof data.Items[i].exitTime == 'undefined' ){
+                  // table.rows[i+1].cells[j].innerHTML = '';
+                  tab += `<td>${''}</td>`;
+                
+                }
+                else if( typeof data.Items[i].exitTime != 'undefined' ){
+                  tab += `<td>${data.Items[i].exitTime}</td>`;
+                  // table.rows[i+1].cells[j].innerHTML = data.Items[i].exitTime;
+                
+                }            
+                tab += `<td><button type="button" class="btn btn-primary btn-sm" id="edit-form">Edit</button></td>
+                <td><button type="button" class="btn btn-danger btn-sm" id="delete-form">Delete</button></td>
+     </tr>`;
             }
+            tbody.innerHTML += tab;
             
         })
         .catch(error => {
