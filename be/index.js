@@ -60,7 +60,7 @@ function getAllMovement(event, callback){
   // app will request all user data or single user data
   //if (type === "all") {
     var params = {
-      TableName: "smartex-movement-table",
+      TableName: "smartex-exit-table",
     };
 
     docClient.scan(params, function (err, data) {
