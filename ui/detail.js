@@ -34,7 +34,14 @@ function manualEntry(){
         .then(data => {
             // Handle success or error response from server
             console.log(data);
-            alert('Welcome to the success page');
+
+            if(data.rollno!=Number(rollNo)){
+                alert('Error');
+            }
+            else{
+                window.alert("Success !!!");
+                window.location.href = "success.html";
+            }
         })
         .catch(error => {
             console.error(error);
