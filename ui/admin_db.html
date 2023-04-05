@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style7.css">
+</head>
+<body>
+    <header class="colored-section" id="title">
+
+        <div class="container-fluid">
+    
+          <!-- Nav Bar -->
+    
+          <nav class="navbar navbar-expand-lg navbar-dark"> 
+            <img src="redlogo.jpg" id="redlogo" alt="logo">
+    
+            <a class="navbar-brand" href="">CAEES</a>
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="homepage.html" target="_blank">Entry/Exit</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="history.html">History</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="credits.html" target="_blank">Credits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" target="_self">Logout</a>
+                  </li>
+              </ul>
+    
+            </div>
+          </nav>
+        </div>
+        
+    </header>
+    <div class="background">
+        <h1 style="margin-bottom: 3rem; margin-top: 1rem;">Admin Dashboard</h1>
+        <div class="container">
+            <div class="row justify-content-center mt-6">
+                <div class="col-md-12">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <h2>Daily Statistics</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6 col-md-3 text-center">
+                                    <svg id="totalEntriesRing" class="ring" viewBox="-10 -10 220 220"></svg>
+                                    <p class="card-text">Total Entries: <span id="totalEntries">0</span></p>
+                                </div>
+                                <div class="col-6 col-md-3 text-center">
+                                    <svg id="totalExitsRing" class="ring" viewBox="-10 -10 220 220"></svg>
+                                    <p class="card-text">Total Exits: <span id="totalExits">0</span></p>
+                                </div>
+                                <div class="col-6 col-md-3 text-center">
+                                    <svg id="totalStudentEntriesRing" class="ring" viewBox="-10 -10 220 220"></svg>
+                                    <p class="card-text">Total Student Entries: <span id="totalStudentEntries">0</span></p>
+                                </div>
+                                <div class="col-6 col-md-3 text-center">
+                                    <svg id="totalNonStudentEntriesRing" class="ring" viewBox="-10 -10 220 220"></svg>
+                                    <p class="card-text">Total Non-Student Entries: <span id="totalNonStudentEntries">0</span></p>
+                                </div>
+                            </div>
+                        </div>                    
+                        </div>                                        
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-6 d-flex justify-content-around">
+                    <a href="change-guard-password.html" class="btn btn-primary" style="background-color: #005985;">Change Guard Password</a>
+                    <a href="change-admin-password.html" class="btn btn-primary" style="background-color: #005985;">Change Admin Password</a>
+                    <a href="add-admin-guard.html" class="btn btn-primary" style="background-color: #005985;">Add Admin/Guard</a>
+                </div>
+            </div>
+        </div>
+    
+        
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+            const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+            return {
+                x: centerX + (radius * Math.cos(angleInRadians)),
+                y: centerY + (radius * Math.sin(angleInRadians)),
+            };
+        }
+    
+        function describeArc(x, y, radius, startAngle, endAngle) {
+            const start = polarToCartesian(x, y, radius, endAngle);
+            const end = polarToCartesian(x, y, radius, startAngle);
+            const largeArcFlag = endAngle - startAngle <= 180 ? '0' : '1';
+    
+            return `
+                M ${start.x} ${start.y}
+                A ${radius} ${radius} 0 ${largeArcFlag} 0 ${end.x} ${end.y}
+            `;
+        }
+    
+        function createGitHubStyleRing(containerId, value, maxValue) {
+            const ringContainer = document.getElementById(containerId);
+            const radius = 100;
+            const strokeWidth = 10;
+            const circleRadius = radius - strokeWidth / 2;
+            const percentage = value / maxValue;
+            const endAngle = percentage * 360;
+    
+            const backgroundCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            backgroundCircle.setAttribute("cx", radius);
+            backgroundCircle.setAttribute("cy", radius);
+            backgroundCircle.setAttribute("r", circleRadius);
+            backgroundCircle.setAttribute("stroke", "#e1e4e8");
+            backgroundCircle.setAttribute("stroke-width", strokeWidth);
+            backgroundCircle.setAttribute("fill", "none");
+    
+            const foregroundArc = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            foregroundArc.setAttribute("d", describeArc(radius, radius, circleRadius, 0, endAngle));
+            foregroundArc.setAttribute("stroke", "#005985");
+            foregroundArc.setAttribute("stroke-width", strokeWidth);
+            foregroundArc.setAttribute("fill", "none");
+    
+            ringContainer.appendChild(backgroundCircle);
+            ringContainer.appendChild(foregroundArc);
+        }
+    
+        const totalEntries = 32;
+        const totalExits = 28;
+        const totalStudentEntries = 23;
+        const totalNonStudentEntries = 9;
+    
+        document.getElementById('totalEntries').innerText = totalEntries;
+        document.getElementById('totalExits').innerText = totalExits;
+        document.getElementById('totalStudentEntries').innerText = totalStudentEntries;
+        document.getElementById('totalNonStudentEntries').innerText = totalNonStudentEntries;
+    
+        createGitHubStyleRing('totalEntriesRing', totalEntries, 100);
+        createGitHubStyleRing('totalExitsRing', totalExits, 100);
+        createGitHubStyleRing('totalStudentEntriesRing', totalStudentEntries, 100);
+        createGitHubStyleRing('totalNonStudentEntriesRing', totalNonStudentEntries, 100);
+    </script>
+    </body>
+    </html>

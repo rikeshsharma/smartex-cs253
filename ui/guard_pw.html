@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guard PW Change</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+  <link rel="stylesheet" type="text/css" href="style6.css">
+  <style>
+    body {
+        background-color: #f5f5f5;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-body {
+        padding: 2rem;
+    }
+
+    .card-header {
+        background-color: #005985;
+        color: white;
+        font-size: 1.25rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #005985;
+        border-color: #005985;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active {
+        background-color: #39708c;
+        border-color: #39708c;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        border-color: #005985;
+    }
+    .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.submit-btn {
+    display: flex;
+    justify-content: center;
+}
+
+</style>
+   <script src="cre_dits.js"></script>
+</head>
+<body>
+    <header class="colored-section" id="title">
+
+        <div class="container-fluid">
+    
+          <!-- Nav Bar -->
+    
+          <nav class="navbar navbar-expand-lg navbar-dark">
+            <img src="redlogo.jpg" id="redlogo" alt="logo">
+    
+            <a class="navbar-brand" href="">CAEES</a>
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="homepage.html">Entry/Exit</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="history.html" target="_blank">History</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="credits.html" target="_blank">Credits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Logout</a>
+                  </li>
+              </ul>
+    
+            </div>
+          </nav>
+
+    
+        </div>
+        
+    </header>
+    <div class="background">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-12 offset-md-0 col-lg-12 offset-lg-0 mt-5">
+                    <div class="card">
+                        <div class="card-header">
+                            Guard Password Change
+                        </div>
+                        <div class="card-body">
+                            <form id="passwordChangeForm">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="New Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm New Password" required>
+                                </div>
+                                <div class="submit-btn">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </body>
+        </html>
