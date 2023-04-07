@@ -44,6 +44,7 @@ function login() {
   .then(data => {
       // Handle success or error response from server
       console.log(data);
+      sessionStorage.setItem('Authenticate', 'yes');
       window.location.href = 'homepage.html';
   })
   .catch(error => {
