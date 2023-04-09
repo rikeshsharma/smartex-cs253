@@ -159,11 +159,9 @@ function updateAdmin(event, callback) {
     
     const body = JSON.parse(event.body);
     console.log("body is:", body);
-
     let id = body.ID;
     //let name = body.name;
     console.log("id is: ", id);
-
     let params = {
         TableName: 'adminData',
         Key: {
@@ -176,7 +174,6 @@ function updateAdmin(event, callback) {
         },
         ReturnValues: "UPDATED_NEW"
     };
-
     console.log("Updating the item...");
     docClient.update(params, function(err, data) {
         if (err) {
@@ -423,6 +420,49 @@ function getExit(event, callback) {
         }
     });
 }
+function updateExit(event, callback) {
+    /*
+        params: {queryType = "updateUser"}
+        body: {rollno, name, , address, degree, department, gender, hallno, roomno, email}
+    */
+    const body = JSON.parse(event.body);
+    console.log("body is:", body);
+
+    let rollno = body.rollno;
+    // let email = body.email;
+    console.log("roll is: ", rollno, "email is: ", email);
+
+    let params = {
+        TableName: 'smartex-exit-table',
+        Key: {
+            "rollno": rollno,
+            // "email": email
+        },
+        UpdateExpression: "set address = :address, hallno = :hallno, roomno = :roomno, email = :email, placeOfVisit = :placeOfVisit, date = :date, time = :time, gaurdID = :gaurdID",
+        ExpressionAttributeValues: {
+            "address" : student.address,
+            "hallno" : student.hallno,
+            "roomno" : student.roomno,
+            "email": student.email,
+            "placeOfVisit" : body.placeOfVisit ? body.placeOfVisit : "IITK Main Gate",
+            "date":body.date,
+            "time":body.time,
+            "gaurdID":body.gaurdID
+        },
+        ReturnValues: "UPDATED_NEW"
+    };
+
+    console.log("Updating the item...");
+    docClient.update(params, function(err, data) {
+        if (err) {
+            console.error("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+        }
+        else {
+            console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
+             callback(null, {"statusCode":200, "body":JSON.stringify(data, null, 2)});
+        }
+    });
+}
 
 const deleteExit = (event, callback) => {
     const body = JSON.parse(event.body);
@@ -559,6 +599,77 @@ function getMovement(event, callback) {
     });
 }
 
+const deleteMovement = (event, callback) => {
+    const body = JSON.parse(event.body);
+    console.log("body is:", body);
+
+    const params1 = {
+        TableName: "smartex-movement-table",
+        Key: {
+            "rollno": body.rollno,
+        }
+    };
+
+    console.log("deleting a row in user data...");
+    docClient.delete(params1, function(err, data) {
+        if (err) {
+            console.error("Unable to delete row in user data. Error JSON:", JSON.stringify(err, null, 2));
+            callback(null, JSON.stringify(err, null, 2));
+        }
+        else {
+            //const queryType = event.queryStringParameters.queryType;
+            console.log("Deleted :", JSON.stringify(data, null, 2));
+             callback(null, {"statusCode":200, "body":JSON.stringify(data, null, 2)});
+
+        }
+    });
+};
+function updatemovementData(event, callback) {
+    /*
+        params: {queryType = "updateUser"}
+        body: {rollno, name, , address, degree, department, gender, hallno, roomno, email}
+    */
+    const body = JSON.parse(event.body);
+    console.log("body is:", body);
+
+    let rollno = body.rollno;
+    // let email = body.email;
+    console.log("roll is: ", rollno, "email is: ", email);
+
+    let params = {
+        TableName: 'movementData',
+        Key: {
+            "rollno": rollno,
+        },
+        UpdateExpression: "set address = :address,  hallno= :hallno, roomno= :roomno, email = :email, placeOfVisit = :placeOfVisit , exitDate = :exitDate, exitTime = :exitTime, exitGaurdID = :exitGaurdID, entryDate = :entryDate, entryTime = :entryTime, entrygaurdID = :entryGaurdID ",
+        ExpressionAttributeValues: {
+            
+            "address" : student.address,
+            "hallno" : student.hallno,
+            "roomno" : student.roomno,
+            "email": student.email,
+            "placeOfVisit" : student.placeOfVisit ? body.placeOfVisit : "IITK Main Gate",
+            "exitDate":student.date,
+            "exitTime":student.time,
+            "exitGaurdID":student.gaurdID,
+            "entryDate":body.date,
+            "entryTime":body.time,
+            "entryGaurdID":body.gaurdID
+        },
+        ReturnValues: "UPDATED_NEW"
+    };
+
+    console.log("Updating the item...");
+    docClient.update(params, function(err, data) {
+        if (err) {
+            console.error("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
+        }
+        else {
+            console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
+             callback(null, {"statusCode":200, "body":JSON.stringify(data, null, 2)});
+        }
+    });
+}
 
 
 
@@ -568,181 +679,5 @@ function getMovement(event, callback) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const addmovementData = (event, callback) => {
-//     console.log("Getting the user.....");
-//     /*
-//         params: {queryType = "getUser", rollno, email}
-//     */
-//     const body = JSON.parse(event.body);
-//     console.log(body);
-//     let params = {
-//         TableName: 'userData',
-//         Key: {
-//             "rollno": body.rollno,
-//             "name": body.name,
-//             }
-//     };
-
-
-//     docClient.get(params, function(error, response) {
-//         if (error) {
-//             console.log('Unable to fetch data', JSON.stringify(error, null, 2));
-//             callback(null, JSON.stringify(error, null, 2));
-//         }
-//         else {
-//             console.log('fetched the user', JSON.stringify(response, null, 2));
-//             callback(null, {"statusCode":200, "body":JSON.stringify(response.Item, null, 2)});
-//         }
-//     });
-//     const params1 = {
-//         TableName: "movementData",
-//         Item: {
-//             "rollno": body.rollno,
-//             "name": body.name,
-//             "address" : body.address,
-//             "degree": body.degree,
-//             "department" :body.department,
-//             "gender" : body.gender,
-//             "hallno" : body.hallno,
-//             "roomno" : body.roomno,
-//             "email": body.email
-//         }
-//     };
-
-//     console.log("trying to add a movementData to table");
-//     docClient.put(params, function(err, data) {
-//         console.log("inside put");
-//         if (err) {
-//             console.error("Unable to add movement data. Error JSON:", JSON.stringify(err, null, 2));
-//             callback(null, JSON.stringify(err, null, 2));
-//         }
-//         else {
-//             console.log("movement data added:", JSON.stringify(params.Item, null, 2));
-//              callback(null, {"statusCode":200, "body":JSON.stringify(params.Item, null, 2)});
-
-//         }
-//     });
-
-// };
-
-
-// const deletemovementData = (event, callback) => {
-//     const body = JSON.parse(event.body);
-//     console.log("body is:", body);
-
-//     const params1 = {
-//         TableName: "movementData",
-//         Key: {
-//             "rollno": body.rollno,
-//             "email": body.email
-//         }
-//     };
-
-//     console.log("deleting a row in movement data...");
-//     docClient.delete(params1, function(err, data) {
-//         if (err) {
-//             console.error("Unable to delete row in movement data. Error JSON:", JSON.stringify(err, null, 2));
-//             callback(null, JSON.stringify(err, null, 2));
-//         }
-//         else {
-//             const queryType = event.queryStringParameters.queryType;
-//             console.log("Deleted :", JSON.stringify(data, null, 2));
-//              callback(null, {"statusCode":200, "body":JSON.stringify(data, null, 2)});
-
-//         }
-//     });
-// };
-
-// function updatemovementData(event, callback) {
-//     /*
-//         params: {queryType = "updateUser"}
-//         body: {rollno, name, , address, degree, department, gender, hallno, roomno, email}
-//     */
-//     const body = JSON.parse(event.body);
-//     console.log("body is:", body);
-
-//     let rollno = body.rollno;
-//     let email = body.email;
-//     console.log("roll is: ", rollno, "email is: ", email);
-
-//     let params = {
-//         TableName: 'movementData',
-//         Key: {
-//             "rollno": rollno,
-//             "email": email
-//         },
-//         UpdateExpression: "set address = :address, degree = :degree, department= :department, gender = :gender, hallno= :hallno, roomno= :roomno",
-//         ExpressionAttributeValues: {
-//             ":address": body.address,
-//             ":degree": body.degree,
-//             ":department": body.department,
-//             ":gender": body.gender,
-//             ":hallno": body.hallno,
-//             ":roomno": body.roomno,
-//         },
-//         ReturnValues: "UPDATED_NEW"
-//     };
-
-//     console.log("Updating the item...");
-//     docClient.update(params, function(err, data) {
-//         if (err) {
-//             console.error("Unable to update item. Error JSON:", JSON.stringify(err, null, 2));
-//         }
-//         else {
-//             console.log("UpdateItem succeeded:", JSON.stringify(data, null, 2));
-//              callback(null, {"statusCode":200, "body":JSON.stringify(data, null, 2)});
-//         }
-//     });
-// }
-
-
-// function getmovementData(event, callback) {
-//     console.log("Getting the movementData.....");
-//     /*
-//         params: {queryType = "getUser", rollno, email}
-//     */
-//     const body = JSON.parse(event.body);
-//     console.log(body);
-//     let params = {
-//         TableName: 'movementData',
-//         Key: {
-//             "rollno": body.rollno,
-//             "email": body.email
-//         }
-//     };
-
-
-//     docClient.get(params, function(error, response) {
-//         if (error) {
-//             console.log('Unable to fetch data', JSON.stringify(error, null, 2));
-//             callback(null, JSON.stringify(error, null, 2));
-//         }
-//         else {
-//             console.log('fetched the movementData', JSON.stringify(response, null, 2));
-//             callback(null, {"statusCode":200, "body":JSON.stringify(response.Item, null, 2)});
-//         }
-//     });
-// }
 
 
