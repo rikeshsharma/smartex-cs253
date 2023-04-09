@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style7.css">
+  <script src = "admin_db.js"></script>
 </head>
 <body>
     <header class="colored-section" id="title">
@@ -140,21 +141,61 @@
             ringContainer.appendChild(backgroundCircle);
             ringContainer.appendChild(foregroundArc);
         }
+        let totalEntries = 32;
+        let totalExits = 28;
+        let totalStudentEntries = 23;
+        let totalNonStudentEntries = 9;
+        console.log("getting count data");
+                // Send the roll no. to the server
+        fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getCount', {
+                method: 'POST',
+                body: JSON.stringify({
+                countID : "09042023",
+            }),
+            headers: {
+                // 'Content-Type': 'application/json'
+                // "Access-Control-Allow-Origin": "*"
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle success or error response from server
+            console.log(data);
+            if(data.countID=="09042023"){
+                totalEntries = data.studentEntryCount + data.nonStudentEntryCount;
+                totalExits = data.studentExitCount + data.nonStudentExitCount;
+                totalStudentEntries = data.studentEntryCount;
+                totalNonStudentEntries = data.nonStudentEntryCount;
+            }
+            console.log(totalEntries);
+            console.log(totalExits); 
+            console.log(totalStudentEntries);
+            console.log(totalNonStudentEntries);
+            console.log("updated");
+            document.getElementById('totalEntries').innerText = totalEntries;
+            document.getElementById('totalExits').innerText = totalExits;
+            document.getElementById('totalStudentEntries').innerText = totalStudentEntries;
+            document.getElementById('totalNonStudentEntries').innerText = totalNonStudentEntries;
+        
+            createGitHubStyleRing('totalEntriesRing', totalEntries, 100);
+            createGitHubStyleRing('totalExitsRing', totalExits, 100);
+            createGitHubStyleRing('totalStudentEntriesRing', totalStudentEntries, 100);
+            createGitHubStyleRing('totalNonStudentEntriesRing', totalNonStudentEntries, 100);
+        })
+        .catch(error => {
+            console.error(error);
+            document.getElementById('totalEntries').innerText = totalEntries;
+            document.getElementById('totalExits').innerText = totalExits;
+            document.getElementById('totalStudentEntries').innerText = totalStudentEntries;
+            document.getElementById('totalNonStudentEntries').innerText = totalNonStudentEntries;
+        
+            createGitHubStyleRing('totalEntriesRing', totalEntries, 100);
+            createGitHubStyleRing('totalExitsRing', totalExits, 100);
+            createGitHubStyleRing('totalStudentEntriesRing', totalStudentEntries, 100);
+            createGitHubStyleRing('totalNonStudentEntriesRing', totalNonStudentEntries, 100);
+        });
     
-        const totalEntries = 32;
-        const totalExits = 28;
-        const totalStudentEntries = 23;
-        const totalNonStudentEntries = 9;
-    
-        document.getElementById('totalEntries').innerText = totalEntries;
-        document.getElementById('totalExits').innerText = totalExits;
-        document.getElementById('totalStudentEntries').innerText = totalStudentEntries;
-        document.getElementById('totalNonStudentEntries').innerText = totalNonStudentEntries;
-    
-        createGitHubStyleRing('totalEntriesRing', totalEntries, 100);
-        createGitHubStyleRing('totalExitsRing', totalExits, 100);
-        createGitHubStyleRing('totalStudentEntriesRing', totalStudentEntries, 100);
-        createGitHubStyleRing('totalNonStudentEntriesRing', totalNonStudentEntries, 100);
+
     </script>
     </body>
     </html>
