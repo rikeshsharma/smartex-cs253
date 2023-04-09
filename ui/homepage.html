@@ -82,38 +82,47 @@
     <script src="cre_dits.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- Custom JS -->
-      <script>
-        // Add barcode scanner functionality here
-        $(document).ready(function() {
-          $('#barcode-input').focus();
-          $('#barcode-input').val('');
-  var timeout;
-
-  // Listen for input events on the text box with ID 'barcode-input'
-  $('#barcode-input').on('input', function() {
-    // If a timer already exists, clear it to reset the delay
-    if (timeout) {
-      clearTimeout(timeout);
-    }
-
-    // Set a new timer for 1 second (1000 milliseconds)
-    timeout = setTimeout(function() {
-      // Simulate a click on the button with ID 'scan-btn'
-      $('#scan-btn').click();
-    }, 500);
-  });
-
-  // Add a click event listener for the 'scan-btn' button
-  $('#scan-btn').on('click', function() {
-    // Change the window location to the target HTML file
-    window.location.href = 'success.html';
-  });
-});
-
-
-      </script>
+    <script>
+      // Add barcode scanner functionality here
+      $(document).ready(function() {
+        $('#barcode-input').focus();
+        $('#barcode-input').val('');
+        var timeout;
+        var removeTextTimeout;
+    
+        // Listen for input events on the text box with ID 'barcode-input'
+        $('#barcode-input').on('input', function() {
+          // If a timer already exists, clear it to reset the delay
+          if (timeout) {
+            clearTimeout(timeout);
+          }
+    
+          // Set a new timer for 1 second (1000 milliseconds)
+          timeout = setTimeout(function() {
+            // Simulate a click on the button with ID 'scan-btn'
+            $('#scan-btn').click();
+          }, 500);
+    
+          // Clear the text removal timeout if it exists
+          if (removeTextTimeout) {
+            clearTimeout(removeTextTimeout);
+          }
+    
+          // Set a new timer for 1 second (1000 milliseconds) to remove the text
+          removeTextTimeout = setTimeout(function() {
+            $('#barcode-input').val('');
+          }, 500);
+        });
+    
+        // Add a click event listener for the 'scan-btn' button
+        $('#scan-btn').on('click', function() {
+          // Change the window location to the target HTML file
+          window.location.href = 'success.html';
+        });
+      });
+    </script>
+    
       
-    </div>
 
   
 </body>
