@@ -11,7 +11,6 @@
 			
 			//current time 
 
-2
 			var today = new Date();
 			var time_today = today.getHours() + ":" + today.getMinutes();
 			var curr_date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();

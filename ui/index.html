@@ -10,6 +10,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="encryption.js"></script>
+    <script src="script.js"></script>
+    <script src="login_detail.js"></script>
     <script src="https://kit.fontawesome.com/b35d85bcda.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -31,27 +33,31 @@
               <i class="fas fa-lock icon"></i>
               <input type="password" name="password" placeholder="Enter your password" required>
             </div>
-            <button type="submit"><i class="fas fa-door-open"></i> Sign in</button>
           </form>
+          <button type = "submit" onclick="login()"><i class="fas fa-door-open"></i> Sign in</button>
 
-          <h2><a href="admin.html" class="links">Admin Login</a></h2>
+          <!--<h2><a href="admin.html" class="links">Admin Login</a></h2>-->
+          <h2><a id="admin-ln" type="button" class="links">Admin Login</a></h2>
           <div class="row" >
             <div class="col-1"></div>
             <div class="col-5">
-              <h1><a href="https://www.iitk.ac.in/" target="_blank" class="links iitk" style="margin-top: 0px;">IIT Kanpur</a></h1>
+              <!--<h1><a href="https://www.iitk.ac.in/" target="_blank"-->
+                <h1><a id="kanpur" type="button" 
+               class="links iitk" style="margin-top: 0px;">IIT Kanpur</a></h1>
             </div>
               <h2 class="links pipe" style="margin-top: 0px;">|</h2>
             <div class="col-5" >
-              <h1><a href="#" class="links help" style="margin-top: 0px;">Need Help?</a></h1>
+              <!--<h1><a href="#" class="links help" style="margin-top: 0px;">Need Help?</a></h1>-->
+              <h1><a id="need" type="button" class="links help" style="margin-top: 0px;">Need Help?</a></h1>
             </div>
           </div>
-          
-          
-        </div>
+       </div>
         <div class="background">
             <img src="https://nwm.iitk.ac.in/skins/elastic/images/logo.svg?s=1553129109" id="logo" alt="Logo">
           <h1>Campus Automated Entry-Exit System</h1>
         </div>
       </div>
+    
+<script src="loginbtn.js"></script>
 </body>
 </html>

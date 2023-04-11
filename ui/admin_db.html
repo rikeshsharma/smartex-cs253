@@ -12,6 +12,7 @@
   <script src = "admin_db.js"></script>
 </head>
 <body>
+    
     <header class="colored-section" id="title">
 
         <div class="container-fluid">
@@ -34,13 +35,13 @@
                   <a class="nav-link" type="button">Entry/Exit</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="history.html">History</a>
+                  <a class="nav-link" type="button">History</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="credits.html">Credits</a>
+                  <a class="nav-link" type="button">Credits</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Logout</a>
+                    <a id="nav-link" type="button" class="nav-link">Logout</a>
                   </li>
               </ul>
     
@@ -82,29 +83,26 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center mt-4">
+            <!--<div class="row justify-content-center mt-4">
                 <div class="col-md-6 d-flex justify-content-around">
                     <a href="guard_pw.html" target="_blank" class="btn btn-primary" style="background-color: #005985;">Change Guard Password</a>
                     <a href="admin_pw.html" target="_blank" class="btn btn-primary" style="background-color: #005985;">Change Admin Password</a>
                     <a href="newadmin.html" target="_blank" class="btn btn-primary" style="background-color: #005985;">Add Admin/Guard</a>
                 </div>
+            </div>-->
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-6 d-flex justify-content-around">
+                    <button id="guard_pw_btn" target="_self" class="btn btn-primary" style="background-color: #005985;">Change Guard Password</a>
+                    <button id="admin_pw_btn" target="_self" class="btn btn-primary" style="background-color: #005985;">Change Admin Password</a>
+                    <button id="add_admin_guard_btn" target="_self" class="btn btn-primary" style="background-color: #005985;">Add Admin/Guard</a>
+                </div>
             </div>
         </div>
-    
-        
     </div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script>
-        function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
-            const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
-            return {
-                x: centerX + (radius * Math.cos(angleInRadians)),
-                y: centerY + (radius * Math.sin(angleInRadians)),
-            };
-        }
-    
         function describeArc(x, y, radius, startAngle, endAngle) {
             const start = polarToCartesian(x, y, radius, endAngle);
             const end = polarToCartesian(x, y, radius, startAngle);
@@ -212,6 +210,7 @@
             createGitHubStyleRing('totalNonStudentEntriesRing', totalNonStudentEntries, 100);
         });
     </script>
+    <script src="dashboard.js"></script>
     <script src="cre_dits.js"></script>
     </body>
     </html>

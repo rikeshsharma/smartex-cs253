@@ -67,12 +67,9 @@
 </head>
 <body>
     <header class="colored-section" id="title">
-
-        <div class="container-fluid">
-    
-          <!-- Nav Bar -->
-    
-          <nav class="navbar navbar-expand-lg navbar-dark">
+       <div class="container-fluid">
+       <!-- Nav Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <img src="redlogo.jpg" id="redlogo" alt="logo">
     
             <a class="navbar-brand" href="">CAEES</a>
@@ -85,24 +82,21 @@
     
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="homepage.html">Entry/Exit</a>
+                  <a class="nav-link" type="button">Entry/Exit</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="history.html">History</a>
+                  <a class="nav-link" type="button">History</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="credits.html">Credits</a>
+                  <a class="nav-link" type="button">Credits</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Logout</a>
+                    <a class="nav-link" type="button">Logout</a>
                   </li>
               </ul>
-    
-            </div>
+             </div>
           </nav>
-
-    
-        </div>
+     </div>
         
     </header>
     <div class="background">
@@ -124,15 +118,16 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm New Password" required>
                                 </div>
-                                <div class="submit-btn">
-                                </div>
-                            </form>
-                            <button type="submit" class="btn btn-primary" onclick="changePassword()">Submit</button>
+                          </form>
+                            <div class="submit-btn">
+                                <button type="submit" class="btn btn-primary" onclick="changePassword()">Submit</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         </div>
+        <script src="password.js"></script>
         </body>
         </html>
