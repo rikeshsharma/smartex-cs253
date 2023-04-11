@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,17 +13,25 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style2.css">
+
+  <style>
+    #barcode-input {
+      width: 50%;
+      display: inline-block;
+    }
+  </style>
+
 </head>
 <body>
     <header class="colored-section" id="title">
-
+      
         <div class="container-fluid">
     
           <!-- Nav Bar -->
-    
+          
           <nav class="navbar navbar-expand-lg navbar-dark">
             <img src="redlogo.jpg" id="redlogo" alt="logo">
-    
+            
             <a class="navbar-brand" href="">CAEES</a>
     
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
@@ -45,29 +54,75 @@
                     <a class="nav-link" type="button">Logout</a>
                   </li>
               </ul>
-           </div>
+    
+            </div>
           </nav>
-       </div>
+          
+    
+        </div>
         
     </header>
     <div class="background">
       <div class="container">
         <div id="scanner">
-          <p>Place the barcode in the frame to scan.</p>
+          <p>Scan the barcode on ID.</p>
         </div>
-        <button id="scan-btn" class="btn btn-primary">Scan Barcode</button>
+        <div>
+          <input type="text" id="barcode-input" class="form-control" placeholder="Scanned barcode will appear here" style="margin-top: 1rem;">
+        </div>
+      </div>
+        <a id="manual-btn" type="button" class="btn btn-link" role="button">Enter Manually</a>
+      </div>
+        <button id="scan-btn" class="btn btn-primary" style="margin-top: 1rem; background-color: rgba(0, 0, 0, 0); border-color: rgba(0, 0, 0, 0); color: rgba(0, 0, 0, 0);">Scan Barcode</button>
+
         <!-- <div id="result"></div> -->
-        
       </div>
-      <a id="manual-btn" type="button" class="btn btn-link" role="button">Enter Manually</a>
-      </div>
-      
-      <script src="entrybtn.js"></script>
-      <!-- jQuery and Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-      
-      
     </div>
-</body>
-</html>
+
+    <script src="entrybtn.js"></script>
+    <script src="cre_dits.js"></script>
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+      // Add barcode scanner functionality here
+      $(document).ready(function() {
+        $('#barcode-input').focus();
+        $('#barcode-input').val('');
+        var timeout;
+        var removeTextTimeout;
+    
+        // Listen for input events on the text box with ID 'barcode-input'
+        $('#barcode-input').on('input', function() {
+          // If a timer already exists, clear it to reset the delay
+          if (timeout) {
+            clearTimeout(timeout);
+          }
+    
+          // Set a new timer for 1 second (1000 milliseconds)
+          timeout = setTimeout(function() {
+            // Simulate a click on the button with ID 'scan-btn'
+            $('#scan-btn').click();
+          }, 500);
+    
+          // Clear the text removal timeout if it exists
+          if (removeTextTimeout) {
+            clearTimeout(removeTextTimeout);
+          }
+    
+          // Set a new timer for 1 second (1000 milliseconds) to remove the text
+          removeTextTimeout = setTimeout(function() {
+            $('#barcode-input').val('');
+          }, 500);
+        });
+    
+        // Add a click event listener for the 'scan-btn' button
+        $('#scan-btn').on('click', function() {
+          // Change the window location to the target HTML file
+          window.location.href = 'success.html';
+        });
+      });
+    </script>  
+  </body>
+  </html>

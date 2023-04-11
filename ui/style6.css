@@ -67,7 +67,7 @@ body {
   .background {
     padding-top: 1rem;
     display: inline-block;
-    height:105vh;
+    height:115vh;
     width: 100%;
     background: linear-gradient(60deg, rgba(19, 186, 189, 0.5), rgba(0, 91, 133, 0.7)), url('bglogin.png') center;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;

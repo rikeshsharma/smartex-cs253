@@ -30,6 +30,7 @@ function changePassword(){
         // Handle success or error response from server
         // console.log(data);
         window.alert("Password updated successfully!");
+        window.location.href = "admin_db.html";
     })
     .catch(error => {
         console.error(error);

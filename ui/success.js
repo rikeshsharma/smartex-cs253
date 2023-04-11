@@ -33,12 +33,7 @@ function submitForm() {
 	fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getExit', {
 		method: 'POST',
 		body: JSON.stringify({
-			//name: Name,
 			rollno: parseInt(rollNo),
-			//hallno: hallNo,
-			//phonenumber: phoneNumber,
-			//placeofvisit: placeOfVisit,
-			
 		}),
 		/*headers: {
 			'Content-Type': 'application/json'
@@ -48,7 +43,6 @@ function submitForm() {
 	.then(data => {
 		// Handle success or error response from server
 		console.log(data);
-		alert('Entry data saved successfully');
 
 		fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=addMovement', {
 		method: 'POST',
@@ -58,7 +52,7 @@ function submitForm() {
 			hallno: hallNo,
 			PhoneNo: phoneNumber,
 			placeofvisit: placeOfVisit,
-			gaurdID: "ABC",
+			gaurdID: gaurdID,
 			time: time_today,
 			date: curr_date
 			
@@ -71,7 +65,8 @@ function submitForm() {
 		.then(data => {
 			console.log('adding in movement is success ')
 			console.log(data);
-			console.log("fgh");
+			alert('student has entered the campus');
+			window.location.href="homepage.html";
 		})
 		.catch(error => {
 			console.log("error in addmovement");
@@ -86,7 +81,7 @@ function submitForm() {
 		body: JSON.stringify({
 			rollno:	parseInt(rollNo),
 			placeOfVisit: placeOfVisit,
-			gaurdID: "ABC",
+			gaurdID: gaurdID,
 			time: time_today,
 			date: curr_date,
 			PhoneNo: phoneNumber
@@ -100,14 +95,17 @@ function submitForm() {
 		.then(data => {
 			console.log('add exit data success');
 			console.log(data);
+			alert('Student has left the campus!!');
+			window.location.href="homepage.html";
 		})
 		.catch(error => {
 			console.log("error in addexit");
 			console.log(error);
+			alert('Error in saving entry data');
 		});
 
 
-		alert('Error in saving entry data');
+		
 	});
 	
 	// Reset the form

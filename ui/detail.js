@@ -130,7 +130,7 @@ function manualEntry() {
           sessionStorage.setItem("nonStudentPhoneno", data.phoneno);
           sessionStorage.setItem("nonStudentId", data.userID);
 
-        //  window.location.href = "nonstudentregis.html";
+          window.location.href = "nonstudentregis.html";
         }
       })
       .catch((error) => {

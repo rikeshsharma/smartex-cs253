@@ -23,6 +23,7 @@ function addNewAdmin(){
     }
     if(password.length < 6){
         window.alert("Password must be more than 6 character long");
+        return;
     }
     // console.log(type);
             // Send the roll no. to the server
@@ -58,6 +59,9 @@ function addNewAdmin(){
             document.getElementById("usernameInput").value = "";
             document.getElementById("passwordInput").value = "";
             document.getElementById("confirmPasswordInput").value = "";
+            accountType[0].checked = false;
+            accountType[1].checked = false;
+
             location.reload();
         }
         else{

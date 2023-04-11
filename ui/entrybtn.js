@@ -1,7 +1,7 @@
 const gaurdName = sessionStorage.getItem("gaurdName");
 const gaurdID = sessionStorage.getItem("gaurdID");
 console.log(gaurdName);
-if(gaurdName==null||gaurdName === "noname"){
+if(gaurdName==null||gaurdName === "noname"||gaurdName==undefined||gaurdName=="undefined"){
   window.location.href = "index.html";
 }
 //console.log(gaurd);

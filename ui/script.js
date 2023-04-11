@@ -7,17 +7,18 @@ function login() {
     console.log("login initiated");
     console.log(username);
     console.log(password);
-     fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getAdmin', {
+     fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=authenticateAdmin', {
       method: 'POST',
       body: JSON.stringify({
-          name : username,
-          gaurdID : password,
+          ID : username,
+          password : password,
       }),
   })
   .then(response => response.json())
   .then(data => {
-      sessionStorage.setItem("gaurdName",username);
-      sessionStorage.setItem("gaurdID",password);
+    console.log(data);
+      sessionStorage.setItem("gaurdName",data.gaurdID);
+    //   sessionStorage.setItem("gaurdID",data.Item.password);
       window.location.href = 'homepage.html';
   })
   .catch(error => {
@@ -35,7 +36,7 @@ function login() {
     console.log(password);
 
      // Send the roll no. to the server
-     fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getAdmin', {
+     fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=authenticateAdmin', {
       method: 'POST',
       body: JSON.stringify({
           name : username,
