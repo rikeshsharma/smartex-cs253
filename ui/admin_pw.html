@@ -63,6 +63,7 @@
 
 </style>
    <script src="cre_dits.js"></script>
+   <script src="admin_db.js"></script>
 </head>
 <body>
     <header class="colored-section" id="title">
@@ -87,10 +88,10 @@
                   <a class="nav-link" href="homepage.html">Entry/Exit</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="history.html" target="_blank">History</a>
+                  <a class="nav-link" href="history.html">History</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="credits.html" target="_blank">Credits</a>
+                  <a class="nav-link" href="credits.html">Credits</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.html">Logout</a>
@@ -115,7 +116,7 @@
                         <div class="card-body">
                             <form id="passwordChangeForm">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter the ID no" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="New Password" required>
@@ -124,9 +125,9 @@
                                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm New Password" required>
                                 </div>
                                 <div class="submit-btn">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
+                            <button type="submit" class="btn btn-primary" onclick="changePassword()">Submit</button>
                         </div>
                     </div>
                 </div>
