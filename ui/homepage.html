@@ -78,7 +78,7 @@
         <!-- <div id="result"></div> -->
       </div>
     </div>
-
+    <script src="scanner.js"></script>
     <script src="entrybtn.js"></script>
     <script src="cre_dits.js"></script>
     <!-- jQuery and Bootstrap JS -->
@@ -94,33 +94,41 @@
         var removeTextTimeout;
     
         // Listen for input events on the text box with ID 'barcode-input'
-        $('#barcode-input').on('input', function() {
-          // If a timer already exists, clear it to reset the delay
-          if (timeout) {
-            clearTimeout(timeout);
-          }
-    
-          // Set a new timer for 1 second (1000 milliseconds)
-          timeout = setTimeout(function() {
-            // Simulate a click on the button with ID 'scan-btn'
-            $('#scan-btn').click();
-          }, 500);
-    
-          // Clear the text removal timeout if it exists
-          if (removeTextTimeout) {
-            clearTimeout(removeTextTimeout);
-          }
-    
-          // Set a new timer for 1 second (1000 milliseconds) to remove the text
-          removeTextTimeout = setTimeout(function() {
-            $('#barcode-input').val('');
-          }, 500);
-        });
+$('#barcode-input').on('input', function() {
+  // If a timer already exists, clear it to reset the delay
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+  
+  // Get the value from the 'barcode-input' textbox
+  var scannedBarcodeValue = $('#barcode-input').val();
+  
+  // Store the value in session storage with the key 'scannedBarcode'
+  sessionStorage.setItem('scannedBarcode', scannedBarcodeValue);
+  
+  // Set a new timer for 1 second (1000 milliseconds)
+  timeout = setTimeout(function() {
+    // Simulate a click on the button with ID 'scan-btn'
+    $('#scan-btn').click();
+  }, 500);
+
+  // Clear the text removal timeout if it exists
+  if (removeTextTimeout) {
+    clearTimeout(removeTextTimeout);
+  }
+
+  // Set a new timer for 1 second (1000 milliseconds) to remove the text
+  removeTextTimeout = setTimeout(function() {
+    $('#barcode-input').val('');
+  }, 500);
+});
+
     
         // Add a click event listener for the 'scan-btn' button
         $('#scan-btn').on('click', function() {
           // Change the window location to the target HTML file
-          window.location.href = 'success.html';
+          // window.location.href = 'success.html';
+          autoEntry();
         });
       });
     </script>  
