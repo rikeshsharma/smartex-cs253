@@ -25,3 +25,11 @@ document.querySelector(".nav-item:nth-child(1)").addEventListener("click", funct
   document.querySelector(".nav-item:nth-child(4)").addEventListener("click", function() {
     window.location.href = "index.html";
   });
+
+  //redirect to manual page
+  $(document).ready(function() {
+    $('#manual-btn').click(function() {
+      window.location.href = 'manual.html';
+    });
+  });
+  
