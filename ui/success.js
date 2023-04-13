@@ -1,7 +1,4 @@
-const gaurdName = sessionStorage.getItem("gaurdName");
-const gaurdID = sessionStorage.getItem("gaurdID");
-console.log(gaurdName);
-if(gaurdName==null||gaurdName === "noname"){
+if(gaurdName1==null||gaurdName1 === "noname"){
   window.location.href = "index.html";
 }
 document.getElementById('nameInput').value = sessionStorage.getItem("studentName");

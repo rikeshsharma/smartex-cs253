@@ -1,7 +1,4 @@
-const gaurdName = sessionStorage.getItem("gaurdName");
-const gaurdID = sessionStorage.getItem("gaurdID");
-console.log(gaurdName);
-if(gaurdName==null||gaurdName === "noname"){
+if(gaurdName1==null||gaurdName1 === "noname"){
   window.location.href = "index.html";
 }
 console.log("details.js loadd");
@@ -62,13 +59,13 @@ function getData(){
                   // table.rows[i+1].cells[j].innerHTML = data.Items[i].address;
                   tab += `<td>${data.Items[i].placeOfVisit}</td>`;
                 }
-                if( typeof data.Items[i].exitTime == 'undefined' ){
+                if( typeof data.Items[i].time == 'undefined' ){
                   // table.rows[i+1].cells[j].innerHTML = '';
                   tab += `<td>${''}</td>`;
                 
                 }
-                else if( typeof data.Items[i].exitTime != 'undefined' ){
-                  tab += `<td>${data.Items[i].exitTime}</td>`;
+                else if( typeof data.Items[i].time != 'undefined' ){
+                  tab += `<td>${data.Items[i].date.concat('_',data.Items[i].time)}</td>`;
                   // table.rows[i+1].cells[j].innerHTML = data.Items[i].exitTime;
                 
                 }            
@@ -89,6 +86,7 @@ function getData(){
       .then(response => response.json())
       .then(data => {
           // Handle success or error response from server
+          console.log("all Exit data");
           console.log(data);
           let tab = ``;
           const tbody = document.querySelector("tbody");
