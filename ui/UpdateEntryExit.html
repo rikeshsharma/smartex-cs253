@@ -7,10 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style3.css">
 </head>
@@ -53,12 +53,20 @@
                 <div class="form-group form-group-centre-align">
                   </div>
                 <div class="form-group">
-                  <label for="name_rollno_Input">Name/Roll No.:</label>
-                  <input type="text" class="form-control" id="name_rollno_Input" placeholder="Enter Name/Roll No." value="" >
+                  <label for="rollNoInput">Roll No.:</label>
+                  <input type="text" class="form-control" id="rollNoInput" placeholder="Enter Roll No." value="" readonly>
                 </div>
                 <div class="form-group">
-                  <label for="addressInput">Room No./Hall:</label>
-                  <textarea class="form-control" id="addressInput" placeholder="Enter Room No./Hall" rows="1" ></textarea>
+                  <label for="hallInput">Hall No.:</label>
+                  <textarea class="form-control" id="hallInput" placeholder="Enter Hall No. " rows="1"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="roomInput">Room No.:</label>
+                  <textarea class="form-control" id="roomInput" placeholder="Enter Room No. " rows="1"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="idInput">Guard Id:</label>
+                  <textarea class="form-control" id="idInput" placeholder="Enter Guard's Id " rows="1"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="placeInput">Place of Visit:</label>
@@ -66,22 +74,22 @@
                   </div>
                   <div class="form-group">
                     <label for="timeInput">Out Time:</label>
-                    <input type="text" class="form-control" id="timeInput" placeholder="Enter Out Time" value="">
+                    <input type="text" class="form-control" id="timeInput" placeholder="Enter Out Time" value="" readonly>
                   </div>
                   <div class="form-group bordered-form-group">
                 </div>
                 </div>
                 <div class="form-group-centre-align" style="margin-bottom: 0.5rem;"><button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button></div>
               </div>
-            </div>
-          </div>
+              </div>
         </div>
       </div>
     </div>
          <!-- jQuery and Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
     </div>
-<script src="success.js"></script>
+<script src="UpdateEntryExit.js"></script>
+<script src="cre_dits.js"></script>
   </body>
 </html>
