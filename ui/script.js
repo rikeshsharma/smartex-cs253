@@ -24,6 +24,9 @@ function login() {
     //   sessionStorage.setItem("gaurdID",data.Item.password);
       window.location.href = 'homepage.html';
     }
+    else{
+      window.alert("Incorrect Username or Password");
+    }
   })
   .catch(error => {
       console.error(error);
@@ -61,6 +64,9 @@ function login() {
       sessionStorage.setItem("login_successful",true);
       sessionStorage.setItem("Authorization_type",data.type);
       window.location.href = 'admin_db.html';
+    }
+    else{
+      window.alert("Incorrect Username or Password");
     }
   })
   .catch(error => {
