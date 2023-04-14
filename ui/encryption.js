@@ -2,12 +2,12 @@ console.log("encryption.js");
 
 console.log('a');
 
-const string = prompt('Enter a character: ');
+//const string = prompt('Enter a character: ');
 
 // convert into ASCII value
-const result = string.charCodeAt(0);
+//const result = string.charCodeAt(0);
 
-console.log(`The ASCII value is: ${result}`);
+//console.log(`The ASCII value is: ${result}`);
 
 let text = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 let ID = "jdhoiABY123";

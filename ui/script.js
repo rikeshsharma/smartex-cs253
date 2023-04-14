@@ -1,4 +1,4 @@
-alert("script.js loaded");
+//alert("script.js loaded");
 
 function login() {
     // get the form data

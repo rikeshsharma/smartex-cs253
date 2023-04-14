@@ -103,6 +103,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
     <script>
+        function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
+            const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
+            return {
+                x: centerX + (radius * Math.cos(angleInRadians)),
+                y: centerY + (radius * Math.sin(angleInRadians)),
+            };
+        }
         function describeArc(x, y, radius, startAngle, endAngle) {
             const start = polarToCartesian(x, y, radius, endAngle);
             const end = polarToCartesian(x, y, radius, startAngle);
@@ -139,54 +146,97 @@
             ringContainer.appendChild(backgroundCircle);
             ringContainer.appendChild(foregroundArc);
         }
-        let totalEntries = 32;
-        let totalExits = 28;
-        let totalStudentEntries = 23;
-        let totalNonStudentEntries = 9;
+        let totalEntries = 0;
+        let totalExits = 0;
+        let totalStudentEntries = 0;
+        let totalNonStudentEntries = 0;
 
-        let currentdate = new Date(); 
-        let datetime  = "";
-        if(currentdate.getDate()+1 < 10){
-            datetime = datetime + "0" + currentdate.getDate() ;
+
+
+
+    async function getCounts(){
+        let obj = {
+            studentExitCount : 0 ,
+            studentEntryCount : 0,
+            nonStudentEntryCount : 0,
+            nonStudentExitCount : 0
         }
-        else{
-            datetime = datetime + currentdate.getDate() ;
-        } 
-        if(currentdate.getMonth()+1 < 10){
-            datetime = datetime + "0" +(currentdate.getMonth()+1) ;
+        await fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getAllMovement', {
+                method: 'POST'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Handle success or error response from server
+                    console.log(data);
+                    obj.studentExitCount = data.Count;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+        await fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getAllExitdata', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle success or error response from server
+                console.log(data);
+                obj.studentEntryCount = data.Count;
+            
+            })
+            .catch(error => {
+                console.error(error);
+            });   
+
+        await fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getAllGeneralMovement', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle success or error response from server
+                console.log(data);
+                obj.nonStudentExitCount = data.Count;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+        await fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getAllGeneralExitdata', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle success or error response from server
+                console.log(data);
+                obj.nonStudentEntryCount = data.Count;
+                
+            })
+            .catch(error => {
+                console.error(error);
+            });
+            return obj;
         }
-        else{
-            datetime = datetime + current.getMonth() ;
-        } 
-        datetime = datetime + currentdate.getFullYear();
-        console.log(datetime);
-        console.log("getting count data");
-        // Send the roll no. to the server
-        fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getCount', {
-                method: 'POST',
-                body: JSON.stringify({
-                countID : "09042023",
-            }),
-            headers: {
-                // 'Content-Type': 'application/json'
-                // "Access-Control-Allow-Origin": "*"
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Handle success or error response from server
-            console.log(data);
-            if(data.countID=="09042023"){
-                totalEntries = data.studentEntryCount + data.nonStudentEntryCount;
-                totalExits = data.studentExitCount + data.nonStudentExitCount;
-                totalStudentEntries = data.studentEntryCount;
-                totalNonStudentEntries = data.nonStudentEntryCount;
-            }
-            console.log(totalEntries);
-            console.log(totalExits); 
-            console.log(totalStudentEntries);
-            console.log(totalNonStudentEntries);
-            console.log("updated");
+
+         let countObj = getCounts().then(value=>{
+            console.log("value of count : ",value);
+
+                totalEntries = value.studentEntryCount + value.nonStudentEntryCount;
+                totalExits = value.studentExitCount + value.nonStudentExitCount;
+                totalStudentEntries = value.studentEntryCount;
+                totalNonStudentEntries  = value.nonStudentEntryCount;
+                document.getElementById('totalEntries').innerText = totalEntries;
+                document.getElementById('totalExits').innerText = totalExits;
+                document.getElementById('totalStudentEntries').innerText = totalStudentEntries;
+                document.getElementById('totalNonStudentEntries').innerText = totalNonStudentEntries;
+            
+                createGitHubStyleRing('totalEntriesRing', totalEntries, 100);
+                createGitHubStyleRing('totalExitsRing', totalExits, 100);
+                createGitHubStyleRing('totalStudentEntriesRing', totalStudentEntries, 100);
+                createGitHubStyleRing('totalNonStudentEntriesRing', totalNonStudentEntries, 100);
+         });
+
+            console.log("countObj : ", countObj);
+
             document.getElementById('totalEntries').innerText = totalEntries;
             document.getElementById('totalExits').innerText = totalExits;
             document.getElementById('totalStudentEntries').innerText = totalStudentEntries;
@@ -196,19 +246,6 @@
             createGitHubStyleRing('totalExitsRing', totalExits, 100);
             createGitHubStyleRing('totalStudentEntriesRing', totalStudentEntries, 100);
             createGitHubStyleRing('totalNonStudentEntriesRing', totalNonStudentEntries, 100);
-        })
-        .catch(error => {
-            console.error(error);
-            document.getElementById('totalEntries').innerText = totalEntries;
-            document.getElementById('totalExits').innerText = totalExits;
-            document.getElementById('totalStudentEntries').innerText = totalStudentEntries;
-            document.getElementById('totalNonStudentEntries').innerText = totalNonStudentEntries;
-        
-            createGitHubStyleRing('totalEntriesRing', totalEntries, 100);
-            createGitHubStyleRing('totalExitsRing', totalExits, 100);
-            createGitHubStyleRing('totalStudentEntriesRing', totalStudentEntries, 100);
-            createGitHubStyleRing('totalNonStudentEntriesRing', totalNonStudentEntries, 100);
-        });
     </script>
     <script src="dashboard.js"></script>
     <script src="cre_dits.js"></script>
