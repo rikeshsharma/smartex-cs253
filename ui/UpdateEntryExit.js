@@ -10,6 +10,7 @@ function submitForm() {
     updateStudent();
   }
   else {
+    console.log("non student");
     updateNonStudent();
   }
   
@@ -21,10 +22,10 @@ function updateStudent(){
 
   // Get the value of the roll number input field
   //rollNo = document.getElementById("rollNoInput").value;
-  hallNo = document.getElementById("hallInput").value;
-  roomNo = document.getElementById("roomInput").value;
-  placeOfVisit = document.getElementById("placeInput").value;
-  guardId=document.getElementById("idInput").value;
+  let hallNo = document.getElementById("hallInput").value;
+  let roomNo = document.getElementById("roomInput").value;
+  let placeOfVisit = document.getElementById("placeInput").value;
+  let guardId = document.getElementById("idInput").value;
  // outTime=document.getElementById("timeInput").value;
   console.log(rollNo);
 
@@ -125,10 +126,10 @@ function updateNonStudent(){
 
   // Get the value of the roll number input field
   //rollNo = document.getElementById("rollNoInput").value;
-  hallNo = document.getElementById("hallInput").value;
-  roomNo = document.getElementById("roomInput").value;
-  placeOfVisit = document.getElementById("placeInput").value;
-  guardId=document.getElementById("idInput").value;
+  let address_1 = document.getElementById("hallInput").value;
+  address_1 += document.getElementById("roomInput").value;
+  let placeOfVisit = document.getElementById("placeInput").value;
+  let guardId=document.getElementById("idInput").value;
  // outTime=document.getElementById("timeInput").value;
   console.log(rollNo);
 
@@ -151,13 +152,14 @@ function updateNonStudent(){
           method: "POST",
           body: JSON.stringify({
           
-             userID : rollNo,
-			 address : hallNo,
-			 roomno : roomNo,
-			 gaurdID : guardId,
-			 placeOfVisit : placeOfVisit,
-			 outTime : outTime,
+            userID : rollNo,
+			      address : address_1,
+			      gaurdID : guardId,
+			      placeOfVisit : placeOfVisit,
+			      time : outTime,
           }),
+        
+
 
           headers: {
             // 'Content-Type': 'application/json'
@@ -191,8 +193,8 @@ function updateNonStudent(){
         body: JSON.stringify({
         
         userID : rollNo,
-        address : hallNo,
-        roomno : roomNo,
+        address : address_1,
+        gaurdID : guardId,
         placeOfVisit : placeOfVisit,
         time : outTime,
         }),
@@ -208,11 +210,13 @@ function updateNonStudent(){
         // Handle success or error response from server
         console.log(data);
 
-        
+        if(placeOfVisit == data.Attributes.placeOfVisit){
           window.alert("Successfully updated movement table !!!");
-         
           window.location.href = "history.html";
-        
+        }
+        else{
+          alert("Update failed, Please check the input");
+        }
       })
       .catch((error) => {
         console.error(error);
