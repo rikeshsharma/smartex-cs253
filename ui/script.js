@@ -18,6 +18,8 @@ function login() {
   .then(data => {
     console.log(data);
       sessionStorage.setItem("gaurdName",data.gaurdID);
+      sessionStorage.setItem("login_successful",true);
+      sessionStorage.setItem("Authorization_type",data.type);
     //   sessionStorage.setItem("gaurdID",data.Item.password);
       window.location.href = 'homepage.html';
   })
@@ -53,6 +55,8 @@ function login() {
     //   console.log(data);
       sessionStorage.setItem("gaurdName",username);
       sessionStorage.setItem("gaurdID",password);
+      sessionStorage.setItem("login_successful",true);
+      sessionStorage.setItem("Authorization_type",data.type);
       window.location.href = 'admin_db.html';
   })
   .catch(error => {

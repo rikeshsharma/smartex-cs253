@@ -317,6 +317,7 @@ function initializeEdit(rowK){
   console.log(outTime);
   console.log("function initialize called");
   sessionStorage.setItem("nameRollno",nameRollno.split("/")[0]);
+
   sessionStorage.setItem("outTime", outTime);
   window.location.href = "UpdateEntryExit.html";
 
@@ -328,7 +329,7 @@ function initializeDelete(rowK){
   console.log(row_i);
   console.log("nameRollNo_"+rowK);
   let nameRollno = document.getElementById("nameRollNo_"+rowK).innerHTML;
-  let outTime = document.getElementById("time_"+rowK);
+  let outTime = document.getElementById("time_"+rowK).innerHTML;
   console.log(outTime);
   if(outTime)
    console.log(nameRollno);
@@ -337,7 +338,7 @@ function initializeDelete(rowK){
   // console.log(outTime);
   console.log("function initialize called");
   sessionStorage.setItem("nameRollno",nameRollno.split("/")[0]);
-  // sessionStorage.setItem("outTime", outTime);
+  sessionStorage.setItem("outTime", outTime);
   window.location.href = "DeleteData.html";
 
 }

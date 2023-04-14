@@ -1,9 +1,4 @@
-let gaurdName = sessionStorage.getItem("gaurdName");
-let gaurdID = sessionStorage.getItem("gaurdID");
-console.log(gaurdName);
-if(gaurdName==null||gaurdName === "noname"){
-  window.location.href = "index.html";
-}
+
 // Get all the "Edit" buttons
 const editButtons = document.querySelectorAll('.btn-primary');
 
