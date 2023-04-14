@@ -17,11 +17,13 @@ function login() {
   .then(response => response.json())
   .then(data => {
     console.log(data);
+    if(password === data.password){
       sessionStorage.setItem("gaurdName",data.gaurdID);
       sessionStorage.setItem("login_successful",true);
       sessionStorage.setItem("Authorization_type",data.type);
     //   sessionStorage.setItem("gaurdID",data.Item.password);
       window.location.href = 'homepage.html';
+    }
   })
   .catch(error => {
       console.error(error);
@@ -53,11 +55,13 @@ function login() {
   .then(data => {
       // Handle success or error response from server
     //   console.log(data);
+    if(password===data.password){
       sessionStorage.setItem("gaurdName",username);
       sessionStorage.setItem("gaurdID",password);
       sessionStorage.setItem("login_successful",true);
       sessionStorage.setItem("Authorization_type",data.type);
       window.location.href = 'admin_db.html';
+    }
   })
   .catch(error => {
       console.error(error);
