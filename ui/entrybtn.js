@@ -18,8 +18,13 @@ document.getElementById("entryButton").addEventListener("click", function() {
 
   // Redirect to Logout page
   document.getElementById("logOutButton").addEventListener("click", function() {
-    
-    // sessionStorage.clear();
-
     window.location.href = "index.html";
   });
+
+  //redirect to manual page
+  $(document).ready(function() {
+    $('#manual-btn').click(function() {
+      window.location.href = 'manual.html';
+    });
+  });
+  

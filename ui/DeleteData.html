@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Student Info</title>
+  <title>Update Entry-Exit</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style3.css">
 </head>
 <body>
     <header class="colored-section" id="title">
-
-        <div class="container-fluid">
-    
+      <div class="container-fluid">
           <!-- Nav Bar -->
-    
           <nav class="navbar navbar-expand-lg navbar-dark">
             <img src="redlogo.jpg" id="redlogo" alt="logo">
-    
             <a class="navbar-brand" href="">CAEES</a>
-    
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                   <a class="nav-link" id="entryButton" type="button">Entry/Exit</a>
@@ -45,55 +39,38 @@
                     <a class="nav-link" id="logOutButton" type="button">Logout</a>
                   </li>
               </ul>
-          </div>
+           </div>
           </nav>
        </div>
-        
-    </header>
+   </header>
     <div class="background">
     <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-10">
+          <div class="col-md-10" style="margin-top: o.5rem;">
             <div class="card mt-4">
-              <div class="card-body">
-                <h4 class="card-title form-group-centre-align">Scan Result</h4>
+              <div class="card-body" style="padding-bottom: 0.2rem; ;">
+                <h3 class="card-title form-group-centre-align">Update Data Form</h3>
                 <div class="form-group form-group-centre-align">
-                    <img src="https://via.placeholder.com/150" alt="User Image" class="img-thumbnail">
                   </div>
                 <div class="form-group">
-                  <label for="nameInput">Name:</label>
-                  <input type="text" class="form-control" id="nameInput" placeholder="Enter name" value="" >
+                  <label for="rollNoInput">Roll No. / UserID:</label>
+                  <input type="text" class="form-control" id="rollNoInput" placeholder="Enter Roll No." value="" readonly>
                 </div>
-                <div class="form-group">
-                  <label for="rollnoInput">Roll No.:</label>
-                  <input type="text" class="form-control" id="rollnoInput" placeholder="Enter rollno" value="" >
+                 <div class="form-group bordered-form-group">
                 </div>
-                <div class="form-group">
-                  <label for="addressInput">Hall:</label>
-                  <textarea class="form-control" id="addressInput" placeholder="Enter Hall" rows="1" ></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="phoneInput">Phone No.:</label>
-                    <input type="text" class="form-control" id="phoneInput" placeholder="Enter phone" value="">
-                  </div>
-                  <div class="form-group">
-                    <label for="placeInput">Place of Visit:</label>
-                    <textarea class="form-control" id="placeInput" placeholder="Enter Place of Visit" rows="2"></textarea>
-                  </div>
-                <div class="form-group-centre-align"><button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button></div>
+                <div class="form-group-centre-align" style="margin-bottom: 0.5rem;"><button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button></div>
               </div>
-            </div>
-          </div>
+              </div>
         </div>
       </div>
     </div>
-      
-      <!-- jQuery and Bootstrap JS -->
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+         <!-- jQuery and Bootstrap JS -->
+      <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
     </div>
     <script src="cre_dits.js"></script>
-    <script src="success.js"></script>
+    <script src="DeleteData.js"></script>
     <script src="authorizeGuard.js"></script>
-</body>
+  </body>
 </html>

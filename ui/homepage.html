@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,14 +24,14 @@
 </head>
 <body>
     <header class="colored-section" id="title">
-
+      
         <div class="container-fluid">
     
           <!-- Nav Bar -->
-    
+          
           <nav class="navbar navbar-expand-lg navbar-dark">
             <img src="redlogo.jpg" id="redlogo" alt="logo">
-    
+            
             <a class="navbar-brand" href="">CAEES</a>
     
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
@@ -41,22 +42,22 @@
     
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link" >Entry/Exit</a>
+                  <a class="nav-link" id="entryButton" type="button">Entry/Exit</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link"  target="_blank">History</a>
+                  <a class="nav-link" id="historyButton" type="button">History</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link"  target="_blank">Credits</a>
+                  <a class="nav-link" id="creditButton"  type="button">Credits</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link">Logout</a>
+                    <a class="nav-link" id="logOutButton" type="button">Logout</a>
                   </li>
               </ul>
     
             </div>
           </nav>
-
+          
     
         </div>
         
@@ -69,17 +70,20 @@
         <div>
           <input type="text" id="barcode-input" class="form-control" placeholder="Scanned barcode will appear here" style="margin-top: 1rem;">
         </div>
-        <div>
-          <a href="manual.html" class="btn btn-link" role="button">Enter Manually</a>
-        </div>
+      </div>
+        <a id="manual-btn" type="button" class="btn btn-link" role="button">Enter Manually</a>
+      </div>
         <button id="scan-btn" class="btn btn-primary" style="margin-top: 1rem; background-color: rgba(0, 0, 0, 0); border-color: rgba(0, 0, 0, 0); color: rgba(0, 0, 0, 0);">Scan Barcode</button>
 
         <!-- <div id="result"></div> -->
       </div>
     </div>
+    <script src="entrybtn.js"></script>
+    <script src="scanner.js"></script>
+    
+    
     <!-- jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="cre_dits.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!-- Custom JS -->
     <script>
@@ -91,39 +95,44 @@
         var removeTextTimeout;
     
         // Listen for input events on the text box with ID 'barcode-input'
-        $('#barcode-input').on('input', function() {
-          // If a timer already exists, clear it to reset the delay
-          if (timeout) {
-            clearTimeout(timeout);
-          }
-    
-          // Set a new timer for 1 second (1000 milliseconds)
-          timeout = setTimeout(function() {
-            // Simulate a click on the button with ID 'scan-btn'
-            $('#scan-btn').click();
-          }, 500);
-    
-          // Clear the text removal timeout if it exists
-          if (removeTextTimeout) {
-            clearTimeout(removeTextTimeout);
-          }
-    
-          // Set a new timer for 1 second (1000 milliseconds) to remove the text
-          removeTextTimeout = setTimeout(function() {
-            $('#barcode-input').val('');
-          }, 500);
-        });
+$('#barcode-input').on('input', function() {
+  // If a timer already exists, clear it to reset the delay
+  if (timeout) {
+    clearTimeout(timeout);
+  }
+  
+  // Get the value from the 'barcode-input' textbox
+  var scannedBarcodeValue = $('#barcode-input').val();
+  
+  // Store the value in session storage with the key 'scannedBarcode'
+  sessionStorage.setItem('scannedBarcode', scannedBarcodeValue);
+  
+  // Set a new timer for 1 second (1000 milliseconds)
+  timeout = setTimeout(function() {
+    // Simulate a click on the button with ID 'scan-btn'
+    $('#scan-btn').click();
+  }, 500);
+
+  // Clear the text removal timeout if it exists
+  if (removeTextTimeout) {
+    clearTimeout(removeTextTimeout);
+  }
+
+  // Set a new timer for 1 second (1000 milliseconds) to remove the text
+  removeTextTimeout = setTimeout(function() {
+    $('#barcode-input').val('');
+  }, 500);
+});
+
     
         // Add a click event listener for the 'scan-btn' button
         $('#scan-btn').on('click', function() {
           // Change the window location to the target HTML file
-          window.location.href = 'success.html';
+          // window.location.href = 'success.html';
+          autoEntry();
         });
       });
-    </script>
-    
-      
-
-  
-</body>
-</html>
+    </script>  
+    <script src="authorizeGuard.js"></script>
+  </body>
+  </html>

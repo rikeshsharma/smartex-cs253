@@ -1,3 +1,4 @@
+
 // Get all the "Edit" buttons
 const editButtons = document.querySelectorAll('.btn-primary');
 

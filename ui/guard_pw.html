@@ -62,47 +62,36 @@
 }
 
 </style>
-   <script src="cre_dits.js"></script>
+   <script src="admin_db.js"></script>
 </head>
 <body>
     <header class="colored-section" id="title">
-
-        <div class="container-fluid">
-    
-          <!-- Nav Bar -->
-    
+      <div class="container-fluid">
+              <!-- Nav Bar -->
           <nav class="navbar navbar-expand-lg navbar-dark">
             <img src="redlogo.jpg" id="redlogo" alt="logo">
-    
             <a class="navbar-brand" href="">CAEES</a>
-    
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
                 <span class="navbar-toggler-icon"></span>
             </button>
-    
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    
-              <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="homepage.html">Entry/Exit</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="history.html" target="_blank">History</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="credits.html" target="_blank">Credits</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Logout</a>
-                  </li>
-              </ul>
-    
-            </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                      <a class="nav-link" id="entryButton" type="button">Entry/Exit</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="historyButton" type="button">History</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="creditButton"  type="button">Credits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="logOutButton" type="button">Logout</a>
+                      </li>
+                  </ul>
+         </div>
           </nav>
-
-    
         </div>
-        
     </header>
     <div class="background">
         <div class="container">
@@ -115,7 +104,7 @@
                         <div class="card-body">
                             <form id="passwordChangeForm">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                                    <input type="text" class="form-control" id="id" name="id" placeholder="Enter the ID no" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="New Password" required>
@@ -123,15 +112,21 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm New Password" required>
                                 </div>
-                                <div class="submit-btn">
+                                <!-- <div class="submit-btn">
                                     <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
+                                </div> -->
                             </form>
+                            <div class="submit-btn">
+                                <button type="submit" class="btn btn-primary" onclick="changePassword()">Submit</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         </div>
+        <script src="cre_dits.js"></script>
+        <script src="password.js"></script>
+        <script src="authorizeAdmin.js"></script>   
         </body>
         </html>
