@@ -1,12 +1,13 @@
 const rollNo = sessionStorage.getItem("nameRollno");
 const outTime = sessionStorage.getItem("outTime");
+let gaurdId = sessionStorage.getItem("gaurdID");
 console.log(rollNo);
 document.getElementById("rollNoInput").value = rollNo;
 document.getElementById("timeInput").value = outTime;
 console.log("details.js loaded");
 
 function submitForm() {
-  if(typeof rollNo === 'number'){
+  if(rollNo[0]-'1'>=0 && rollNo[0]-'9'<=0){
     updateStudent();
   }
   else {

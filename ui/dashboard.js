@@ -1,9 +1,3 @@
-const gaurdName = sessionStorage.getItem("gaurdName");
-const gaurdID = sessionStorage.getItem("gaurdID");
-console.log(gaurdName);
-if(gaurdName==null||gaurdName === "noname"){
-  window.location.href = "index.html";
-}
 //console.log(gaurd);
 
   // Get the button

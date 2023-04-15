@@ -3,7 +3,7 @@ let nonStudentAddress = sessionStorage.getItem("nonStudentAddress");
 let nonStudentId = sessionStorage.getItem("nonStudentId");
 let nonStudentName = sessionStorage.getItem("nonStudentName");
 let nonStudentPhoneno = sessionStorage.getItem("nonStudentPhoneno");
-
+let gaurdID = sessionStorage.getItem("gaurdID");
 document.getElementById('addressInput').value = nonStudentAddress;
 document.getElementById('IDInput').value = nonStudentId;
 document.getElementById('nameInput').value = nonStudentName;
@@ -82,7 +82,7 @@ function submitForm() {
 		body: JSON.stringify({
 			ID:	id_uni,
 			placeOfVisit: purposeofVisitInput,
-			guardID: "ABC",
+			guardID: gaurdID,
 			time: time_today,
 			date: curr_date,
 			phoneNo: phoneNumber

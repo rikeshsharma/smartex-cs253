@@ -35,7 +35,7 @@ function autoEntry() {
         if (data.rollno != rollNo) {
         alert("Error");
         } else {
-        window.alert("Success !!!");
+        // window.alert("Success !!!");
         sessionStorage.setItem("studentName", data.name);
         sessionStorage.setItem("studentRollno", data.rollno);
         sessionStorage.setItem("studentHallno", data.hallno);

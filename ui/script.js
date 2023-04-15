@@ -18,7 +18,7 @@ function login() {
   .then(data => {
     console.log(data);
     if(password === data.password){
-      sessionStorage.setItem("gaurdName",data.gaurdID);
+      sessionStorage.setItem("gaurdID",data.gaurdID);
       sessionStorage.setItem("login_successful",true);
       sessionStorage.setItem("Authorization_type",data.type);
     //   sessionStorage.setItem("gaurdID",data.Item.password);
@@ -46,8 +46,8 @@ function login() {
      fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=authenticateAdmin', {
       method: 'POST',
       body: JSON.stringify({
-          name : username,
-          gaurdID : password,
+          ID : username,
+          password : password,
       }),
     //   headers: {
     //       // 'Content-Type': 'application/json'
@@ -57,12 +57,13 @@ function login() {
   .then(response => response.json())
   .then(data => {
       // Handle success or error response from server
-    //   console.log(data);
+      console.log(data);
     if(password===data.password){
-      sessionStorage.setItem("gaurdName",username);
-      sessionStorage.setItem("gaurdID",password);
+      sessionStorage.setItem("gaurdID",data.gaurdID);
+      // sessionStorage.setItem("gaurdID",password);
       sessionStorage.setItem("login_successful",true);
       sessionStorage.setItem("Authorization_type",data.type);
+      alert("wait");
       window.location.href = 'admin_db.html';
     }
     else{

@@ -3,7 +3,7 @@ document.getElementById('nameInput').value = sessionStorage.getItem("studentName
 document.getElementById('rollnoInput').value = sessionStorage.getItem("studentRollno");
 document.getElementById('addressInput').value = "Hall: "+sessionStorage.getItem("studentHallno") +" / Room-no: " + sessionStorage.getItem("studentRoomno");
 document.getElementById('phoneInput').value = sessionStorage.getItem("studentPhoneno");
-
+let gaurdID = sessionStorage.getItem("gaurdID");
 
 		
 
