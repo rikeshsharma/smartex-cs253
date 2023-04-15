@@ -43,7 +43,7 @@ function submitForm() {
 	.then(response => response.json())
 	.then(data => {
 		// Handle success or error response from server
-		console.log(data);
+		// console.log(data);
 		fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=addGeneralMovement', {
 		method: 'POST',
 		body: JSON.stringify({
@@ -62,21 +62,21 @@ function submitForm() {
 		})
 		.then(response => response.json())
 		.then(data => {
-			console.log('adding in movement is success ')
-			console.log(data);
+			// console.log('adding in movement is success ')
+			// console.log(data);
 			alert('User has entered the campus');
-			console.log("fgh");
+			// console.log("fgh");
 			window.location.href= "homepage.html";
 		})
 		.catch(error => {
-			console.log("error in addmovement");
+			// console.log("error in addmovement");
 			alert('Failed entry');
-			console.log(error);
+			// console.log(error);
 		});
 	})
 	.catch(error => {
 		console.error(error);
-		console.log("Error of get user");
+		// console.log("Error of get user");
 		fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=addGeneralExit', {
 		method: 'POST',
 		body: JSON.stringify({
@@ -94,15 +94,15 @@ function submitForm() {
 		})
 		.then(response => response.json())
 		.then(data => {
-			console.log('add exit data success');
+			// console.log('add exit data success');
 			alert('User has left the campus');
-			console.log(data);
+			// console.log(data);
 			window.location.href= "homepage.html";
 		})
 		.catch(error => {
-			console.log("error in addexit");
+			// console.log("error in addexit");
 			alert('Failed to mark exit');
-			console.log(error);
+			// console.log(error);
 		});
 	});
 	

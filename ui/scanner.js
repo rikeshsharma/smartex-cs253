@@ -1,12 +1,12 @@
 
-console.log("scanner.js loaded");
+// console.log("scanner.js loaded");
 let rollNo = 0;
 
 function autoEntry() {
-    console.log("Auto Entry called");
+    // console.log("Auto Entry called");
 
     rollNo = sessionStorage.getItem("scannedBarcode"); //to be modified
-    console.log(rollNo);
+    // console.log(rollNo);
 
     rollNo = Number(rollNo);
 
@@ -29,7 +29,7 @@ function autoEntry() {
     .then((response) => response.json())
     .then((data) => {
         // Handle success or error response from server
-        console.log(data);
+        // console.log(data);
 
         // if(data.rollno!=Number(rollNo)){
         if (data.rollno != rollNo) {

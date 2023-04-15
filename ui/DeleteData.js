@@ -2,14 +2,14 @@ const rollNo = sessionStorage.getItem("nameRollno");
 const outTime = sessionStorage.getItem("outTime");
 
 document.getElementById("rollNoInput").value = rollNo;
-console.log("details.js loaded");
+// console.log("details.js loaded");
 
 function submitForm() {
   if(rollNo[0]-'1'>=0 && rollNo[0]-'9'<=0){
     deleteStudent();
   }
   else {
-    console.log("non student");
+    // console.log("non student");
     deleteNonStudent();
   }
 }
@@ -28,7 +28,7 @@ function deleteStudent(){
   })
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     fetch(
         "https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=deleteExit",
         {
@@ -47,7 +47,7 @@ function deleteStudent(){
         .then((response) => response.json())
         .then((data) => {
           // Handle success or error response from server
-          console.log(data);
+          // console.log(data);
 
           
             window.alert("Successfully updated exit table !!!");
@@ -63,7 +63,7 @@ function deleteStudent(){
   })
   .catch((error) => {
     console.error(error);
-    console.log("out time is : ", outTime);
+    // console.log("out time is : ", outTime);
     fetch(
       "https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=deleteMovement",
       {
@@ -83,7 +83,7 @@ function deleteStudent(){
       .then((response) => response.json())
       .then((data) => {
         // Handle success or error response from server
-        console.log(data);
+        // console.log(data);
 
         
           window.alert("Successfully updated movement table !!!");
@@ -113,7 +113,7 @@ function deleteNonStudent(){
   })
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     fetch(
         "https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=deleteGeneralExit",
         {
@@ -132,7 +132,7 @@ function deleteNonStudent(){
         .then((response) => response.json())
         .then((data) => {
           // Handle success or error response from server
-          console.log(data);
+          // console.log(data);
 
           
             window.alert("Successfully updated exit table !!!");
@@ -148,7 +148,7 @@ function deleteNonStudent(){
   })
   .catch((error) => {
     console.error(error);
-    console.log("out time is : ", outTime);
+    // console.log("out time is : ", outTime);
     fetch(
       "https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=deleteGeneralMovement",
       {
@@ -168,7 +168,7 @@ function deleteNonStudent(){
       .then((response) => response.json())
       .then((data) => {
         // Handle success or error response from server
-        console.log(data);
+        // console.log(data);
 
         
           window.alert("Successfully updated movement table !!!");

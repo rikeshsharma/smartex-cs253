@@ -1,17 +1,26 @@
 const rollNo = sessionStorage.getItem("nameRollno");
 const outTime = sessionStorage.getItem("outTime");
 let gaurdId = sessionStorage.getItem("gaurdID");
-console.log(rollNo);
+let roomNo = sessionStorage.getItem("roomNo");
+let hallNo = sessionStorage.getItem("hallNo");
+let placeOfVisit = sessionStorage.getItem("placeOfVisit");
+// console.log(rollNo);
+if(hallNo=="undefined" || hallNo==null||hallNo=="null"||hallNo==undefined)
+  hallNo = "";
 document.getElementById("rollNoInput").value = rollNo;
 document.getElementById("timeInput").value = outTime;
-console.log("details.js loaded");
+document.getElementById("hallInput").value = hallNo;
+document.getElementById("roomInput").value = roomNo;
+document.getElementById("idInput").value = gaurdId;
+document.getElementById("placeInput").value = placeOfVisit;
+// console.log("details.js loaded");
 
 function submitForm() {
   if(rollNo[0]-'1'>=0 && rollNo[0]-'9'<=0){
     updateStudent();
   }
   else {
-    console.log("non student");
+    // console.log("non student");
     updateNonStudent();
   }
   
@@ -19,7 +28,7 @@ function submitForm() {
 }
 
 function updateStudent(){
-  console.log("Manual Entry called");
+  // console.log("Manual Entry called");
 
   // Get the value of the roll number input field
   //rollNo = document.getElementById("rollNoInput").value;
@@ -28,7 +37,7 @@ function updateStudent(){
   let placeOfVisit = document.getElementById("placeInput").value;
   let guardId = document.getElementById("idInput").value;
  // outTime=document.getElementById("timeInput").value;
-  console.log(rollNo);
+  // console.log(rollNo);
 
   fetch("https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getExit",
   {
@@ -42,7 +51,7 @@ function updateStudent(){
   })
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     fetch(
         "https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=updateExit",
         {
@@ -66,7 +75,7 @@ function updateStudent(){
         .then((response) => response.json())
         .then((data) => {
           // Handle success or error response from server
-          console.log(data);
+          // console.log(data);
 
           
             window.alert("Successfully updated exit table !!!");
@@ -104,7 +113,7 @@ function updateStudent(){
       .then((response) => response.json())
       .then((data) => {
         // Handle success or error response from server
-        console.log(data);
+        // console.log(data);
 
         
           window.alert("Successfully updated movement table !!!");
@@ -123,7 +132,7 @@ function updateStudent(){
 
 
 function updateNonStudent(){
-  console.log("Manual Entry called");
+  // console.log("Manual Entry called");
 
   // Get the value of the roll number input field
   //rollNo = document.getElementById("rollNoInput").value;
@@ -132,7 +141,7 @@ function updateNonStudent(){
   let placeOfVisit = document.getElementById("placeInput").value;
   let guardId=document.getElementById("idInput").value;
  // outTime=document.getElementById("timeInput").value;
-  console.log(rollNo);
+  // console.log(rollNo);
 
   fetch("https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getGeneralExit",
   {
@@ -146,7 +155,7 @@ function updateNonStudent(){
   })
   .then((response) => response.json())
   .then((data) => {
-    console.log(data);
+    // console.log(data);
     fetch(
         "https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=updateGeneralExit",
         {
@@ -171,7 +180,7 @@ function updateNonStudent(){
         .then((response) => response.json())
         .then((data) => {
           // Handle success or error response from server
-          console.log(data);
+          // console.log(data);
 
           
             window.alert("Successfully updated exit table !!!");
@@ -209,7 +218,7 @@ function updateNonStudent(){
       .then((response) => response.json())
       .then((data) => {
         // Handle success or error response from server
-        console.log(data);
+        // console.log(data);
 
         if(placeOfVisit == data.Attributes.placeOfVisit){
           window.alert("Successfully updated movement table !!!");

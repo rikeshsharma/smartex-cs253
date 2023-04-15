@@ -1,4 +1,4 @@
-console.log("details.js loadd");
+// console.log("details.js loadd");
 // get the input field and table
 let searchInput = document.getElementById("search-input");
 let table = document.getElementsByTagName("table")[0];
@@ -12,13 +12,13 @@ function getData(){
         .then(response => response.json())
         .then(data => {
             // Handle success or error response from server
-            console.log(data);
+            // console.log(data);
             studentExitCount = data.Count;
             
             let tab = ``;
             const tbody = document.querySelector("tbody");
-            console.log('asdfsdf123');
-            console.log(typeof(data.Items[0].rollno));
+            // console.log('asdfsdf123');
+            // console.log(typeof(data.Items[0].rollno));
             
             for(let i=0;i<data.Items.length; ++i){
               
@@ -84,11 +84,11 @@ function getData(){
       .then(response => response.json())
       .then(data => {
           // Handle success or error response from server
-          console.log(data);
+          // console.log(data);
           studentEntryCount = data.Count;
           let tab = ``;
           const tbody = document.querySelector("tbody");
-          console.log(typeof(data.Items[0].rollno));
+          // console.log(typeof(data.Items[0].rollno));
           for(let i=0;i<data.Items.length; ++i){
                tab += `<tr id='row_${s_no}'><td>${s_no}</td>`;
                if (typeof data.Items[i].rollno == 'undefined'){
@@ -151,12 +151,12 @@ function getData(){
         .then(response => response.json())
         .then(data => {
             // Handle success or error response from server
-            console.log(data);
+            // console.log(data);
             nonStudentExitCount = data.Count;
             let tab = ``;
             const tbody = document.querySelector("tbody");
-            // console.log('asdfsdf123');
-            // console.log(typeof(data.Items[0].userID));
+            // // console.log('asdfsdf123');
+            // // console.log(typeof(data.Items[0].userID));
             
             for(let i=0;i<data.Items.length; ++i){
               
@@ -222,11 +222,11 @@ function getData(){
       .then(response => response.json())
       .then(data => {
           // Handle success or error response from server
-          console.log(data);
+          // console.log(data);
           nonStudentEntryCount = data.Count;
           let tab = ``;
           const tbody = document.querySelector("tbody");
-          // console.log(typeof(data.Items[0].rollno));
+          // // console.log(typeof(data.Items[0].rollno));
           for(let i=0;i<data.Items.length; ++i){
                tab += `<tr id='row_${s_no}'><td>${s_no}</td>`;
                if (typeof data.Items[i].userID == 'undefined'){
@@ -283,7 +283,7 @@ function getData(){
 }
 getData();
 
-console.log("dfg");
+// console.log("dfg");
    
 // add event listener to the input field
 searchInput.addEventListener("keyup", function() {
@@ -304,40 +304,47 @@ searchInput.addEventListener("keyup", function() {
 });
 
 function initializeEdit(rowK){
-  console.log(rowK);
+  // console.log(rowK);
   let nameRollno = document.getElementById("nameRollNo_"+rowK).innerHTML;
   let roomNoHallNo = document.getElementById("roomNoHallNo_"+rowK).innerHTML;
   let placeOfVisit = document.getElementById("placeOfVisit_"+rowK).innerHTML;
   let outTime = document.getElementById("time_"+rowK).innerHTML;
 
-  // console.log(nameRollno);
-  console.log(nameRollno.split("/")[0]);
-  console.log(roomNoHallNo);
-  console.log(placeOfVisit);
-  console.log(outTime);
-  console.log("function initialize called");
+  // // console.log(nameRollno);
+  // console.log(nameRollno.split("/")[0]);
+  // console.log(roomNoHallNo);
+  // console.log(placeOfVisit);
+  // console.log(outTime);
+  // console.log("function initialize called");
   sessionStorage.setItem("nameRollno",nameRollno.split("/")[0]);
-
+  sessionStorage.setItem("roomNo", roomNoHallNo.split("/")[0]);
+  sessionStorage.setItem("hallNo", roomNoHallNo.split("/")[1]);
+  sessionStorage.setItem("placeOfVisit", placeOfVisit);
   sessionStorage.setItem("outTime", outTime);
   window.location.href = "UpdateEntryExit.html";
 
 }
 
 function initializeDelete(rowK){
-  console.log(rowK);
+  // console.log(rowK);
   let row_i  = document.getElementById("row_"+rowK);
-  console.log(row_i);
-  console.log("nameRollNo_"+rowK);
+  // console.log(row_i);
+  // console.log("nameRollNo_"+rowK);
   let nameRollno = document.getElementById("nameRollNo_"+rowK).innerHTML;
+  let roomNoHallNo = document.getElementById("roomNoHallNo_"+rowK).innerHTML;
+  let placeOfVisit = document.getElementById("placeOfVisit_"+rowK).innerHTML;
   let outTime = document.getElementById("time_"+rowK).innerHTML;
-  console.log(outTime);
-  if(outTime)
-   console.log(nameRollno);
-   window.alert("confirm");
-  console.log(nameRollno.split("/")[0]);
   // console.log(outTime);
-  console.log("function initialize called");
+  if(outTime)
+   // console.log(nameRollno);
+   window.alert("confirm");
+  // console.log(nameRollno.split("/")[0]);
+  // // console.log(outTime);
+  // console.log("function initialize called");
   sessionStorage.setItem("nameRollno",nameRollno.split("/")[0]);
+  sessionStorage.setItem("roomNo", roomNoHallNo.split("/")[0]);
+  sessionStorage.setItem("hallNo","");
+  sessionStorage.setItem("placeOfVisit", placeOfVisit);
   sessionStorage.setItem("outTime", outTime);
   window.location.href = "DeleteData.html";
 
