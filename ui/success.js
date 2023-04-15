@@ -45,7 +45,8 @@ function submitForm() {
 			rollno: parseInt(rollNo),
 			hallno: hallNo,
 			PhoneNo: phoneNumber,
-			placeofvisit: placeOfVisit,
+			placeOfVisit: placeOfVisit,
+			exitPlaceOfVisit : data.placeOfVisit,
 			gaurdID: gaurdID,
 			time: time_today,
 			date: curr_date

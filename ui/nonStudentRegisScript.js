@@ -51,6 +51,7 @@ function submitForm() {
 			ID: id_uni,
 			phoneNo: phoneNumber,
 			placeOfVisit: purposeofVisitInput,
+			exitPlaceOfVisit : data.placeOfVisit,
 			gaurdID: gaurdID,
 			time: time_today,
 			date: curr_date

@@ -332,7 +332,7 @@ function initializeDelete(rowK){
   // console.log("nameRollNo_"+rowK);
   let nameRollno = document.getElementById("nameRollNo_"+rowK).innerHTML;
   let roomNoHallNo = document.getElementById("roomNoHallNo_"+rowK).innerHTML;
-  let placeOfVisit = document.getElementById("placeOfVisit_"+rowK).innerHTML;
+  // let placeOfVisit = document.getElementById("placeOfVisit_"+rowK).innerHTML;
   let outTime = document.getElementById("time_"+rowK).innerHTML;
   // console.log(outTime);
   if(outTime)
@@ -343,8 +343,8 @@ function initializeDelete(rowK){
   // console.log("function initialize called");
   sessionStorage.setItem("nameRollno",nameRollno.split("/")[0]);
   sessionStorage.setItem("roomNo", roomNoHallNo.split("/")[0]);
-  sessionStorage.setItem("hallNo","");
-  sessionStorage.setItem("placeOfVisit", placeOfVisit);
+  // sessionStorage.setItem("hallNo","");
+  // sessionStorage.setItem("placeOfVisit", placeOfVisit);
   sessionStorage.setItem("outTime", outTime);
   window.location.href = "DeleteData.html";
 
