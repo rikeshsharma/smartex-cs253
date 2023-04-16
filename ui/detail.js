@@ -1,16 +1,16 @@
-console.log("details.js loaded");
+// console.log("details.js loaded");
 let rollNo = 0;
 
 function manualEntry() {
   // Add event listener for manual entry
-  console.log("Manual Entry called");
+  // console.log("Manual Entry called");
   // document.querySelector("manual-entry").addEventListener("submit", function(event) {
   // Prevent the default form submission
   //event.preventDefault();
 
   // Get the value of the roll number input field
   rollNo = document.getElementById("rollNoInput").value;
-  console.log(rollNo);
+  // console.log(rollNo);
 
   // get the radio button value
   let radios = document.getElementsByName("userType");
@@ -21,7 +21,7 @@ function manualEntry() {
       break;
     }
   }
-  console.log(userType);
+  // console.log(userType);
 
   // Perform validation on the input
 
@@ -63,7 +63,7 @@ function manualEntry() {
         .then((response) => response.json())
         .then((data) => {
           // Handle success or error response from server
-          console.log(data);
+          // console.log(data);
 
           // if(data.rollno!=Number(rollNo)){
           if (data.rollno != rollNo) {
@@ -94,7 +94,7 @@ function manualEntry() {
     }
    else {
     // Send the id to the server
-    console.log("114");
+    // console.log("114");
     fetch(
       "https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=getGeneralUser",
       {
@@ -111,7 +111,7 @@ function manualEntry() {
       .then((response) => response.json())
       .then((data) => {
         // Handle success or error response from server
-        console.log(data);
+        // console.log(data);
 
         // if(data.rollno!=Number(rollNo)){
         if (data.userID != rollNo) {

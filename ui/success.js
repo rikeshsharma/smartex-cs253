@@ -15,7 +15,30 @@ function submitForm() {
 	let hallNo = document.getElementById('addressInput').value;
 	let placeOfVisit = document.getElementById('placeInput').value;
 	let phoneNumber = document.getElementById('phoneInput').value;
-	
+	if(Name.length === 0){
+		window.alert("Name field must not be empty");
+		return;
+	}
+	if(rollNo.length === 0){
+		window.alert("Roll no field must not be empty");
+		return;
+	}
+	if(hallNo.length === 0){
+		window.alert("Hall and Room no field must not be empty");
+		return; 
+	}
+	if(placeOfVisit.length === 0){
+		window.alert("Please enter Place of Visit to proceed");
+		return;
+	}
+	let phoneNumberPattern = /^\d{10}$/;
+	if(phoneNumber.match(phoneNumberPattern)){
+      
+    }
+    else{
+        window.alert("Enter a correct phone number");
+        return;
+    }
 	//current time 
 
 	var today = new Date();
@@ -36,7 +59,7 @@ function submitForm() {
 	.then(response => response.json())
 	.then(data => {
 		// Handle success or error response from server
-		console.log(data);
+		// console.log(data);
 
 		fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=addMovement', {
 		method: 'POST',
@@ -45,7 +68,8 @@ function submitForm() {
 			rollno: parseInt(rollNo),
 			hallno: hallNo,
 			PhoneNo: phoneNumber,
-			placeofvisit: placeOfVisit,
+			placeOfVisit: placeOfVisit,
+			exitPlaceOfVisit : data.placeOfVisit,
 			gaurdID: gaurdID,
 			time: time_today,
 			date: curr_date
@@ -57,8 +81,8 @@ function submitForm() {
 		})
 		.then(response => response.json())
 		.then(data => {
-			console.log('adding in movement is success ')
-			console.log(data);
+			// console.log('adding in movement is success ')
+			// console.log(data);
 			alert('student has entered the campus');
 			window.location.href="homepage.html";
 		})
@@ -69,7 +93,7 @@ function submitForm() {
 	})
 	.catch(error => {
 		console.error(error);
-		console.log("Error of get user");
+		//console.log("Error of get user");
 		fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=addExit', {
 		method: 'POST',
 		body: JSON.stringify({
@@ -87,8 +111,8 @@ function submitForm() {
 		})
 		.then(response => response.json())
 		.then(data => {
-			console.log('add exit data success');
-			console.log(data);
+			//console.log('add exit data success');
+			//console.log(data);
 			alert('Student has left the campus!!');
 			window.location.href="homepage.html";
 		})

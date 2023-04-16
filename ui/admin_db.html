@@ -168,7 +168,7 @@
                 .then(response => response.json())
                 .then(data => {
                     // Handle success or error response from server
-                    console.log(data);
+                    // console.log(data);
                     obj.studentExitCount = data.Count;
                 })
                 .catch(error => {
@@ -181,7 +181,7 @@
             .then(response => response.json())
             .then(data => {
                 // Handle success or error response from server
-                console.log(data);
+                // console.log(data);
                 obj.studentEntryCount = data.Count;
             
             })
@@ -195,7 +195,7 @@
             .then(response => response.json())
             .then(data => {
                 // Handle success or error response from server
-                console.log(data);
+                // console.log(data);
                 obj.nonStudentExitCount = data.Count;
             })
             .catch(error => {
@@ -208,7 +208,7 @@
             .then(response => response.json())
             .then(data => {
                 // Handle success or error response from server
-                console.log(data);
+                // console.log(data);
                 obj.nonStudentEntryCount = data.Count;
                 
             })
@@ -219,7 +219,7 @@
         }
 
          let countObj = getCounts().then(value=>{
-            console.log("value of count : ",value);
+            // console.log("value of count : ",value);
 
                 totalEntries = value.studentEntryCount + value.nonStudentEntryCount;
                 totalExits = value.studentExitCount + value.nonStudentExitCount;
@@ -236,7 +236,7 @@
                 createGitHubStyleRing('totalNonStudentEntriesRing', totalNonStudentEntries, 100);
          });
 
-            console.log("countObj : ", countObj);
+            // console.log("countObj : ", countObj);
 
             document.getElementById('totalEntries').innerText = totalEntries;
             document.getElementById('totalExits').innerText = totalExits;
