@@ -12,12 +12,39 @@ document.getElementById('phoneInput').value = nonStudentPhoneno;
 		// Define a function to handle  entry form submission
 function submitForm() {
 	// Get the entry form values
-	let Name = nonStudentName;
-	let id_uni = nonStudentId;
-	let phoneNumber = nonStudentPhoneno;
+	let address = document.getElementById('addressInput').value;
+	let id_uni = document.getElementById('IDInput').value;
+	let Name = document.getElementById('nameInput').value;
+	let phoneNumber = document.getElementById('phoneInput').value;
 
 	let purposeofVisitInput = document.getElementById('purposeofVisitInput').value; ;
+
 	
+	if(Name.length === 0){
+		window.alert("Name field must not be empty");
+		return;
+	}
+	if(id_uni.length === 0){
+		window.alert("User ID no field must not be empty");
+		return;
+	}
+	if(address.length === 2){
+		window.alert("Please enter your address correctly");
+		return;
+	}
+	if(purposeofVisitInput.length === 0){
+		window.alert("Please enter Place of Visit to proceed");
+		return;
+	}
+	let phoneNumberPattern = /^\d{10}$/;
+	if(phoneNumber.match(phoneNumberPattern)){
+      
+    }
+    else{
+        window.alert("Enter a correct phone number");
+        return;
+    }
+
 	//current time 
 
 	var today = new Date();

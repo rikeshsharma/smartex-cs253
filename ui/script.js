@@ -7,6 +7,18 @@ function login() {
     // console.log("login initiated");
     // console.log(username);
     // console.log(password);
+    if(username.length === 0){
+        window.alert("Username field is empty");
+        return;
+    }
+    if(username.length > 35){
+        window.alert("Username is too long");
+        return;
+    }
+    if(password.length === 0){
+        window.alert("Password field is empty");
+        return;
+    }
     let encryptedPassword = encrypt(password, username);
      fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=authenticateAdmin', {
       method: 'POST',
@@ -42,6 +54,18 @@ function login() {
     // console.log("login initiated");
     // console.log(username);
     // console.log(password);
+    if(username.length === 0){
+        window.alert("Username field is empty");
+        return;
+    }
+    if(username.length > 35){
+        window.alert("Username is too long");
+        return;
+    }
+    if(password.length === 0){
+        window.alert("Password field is empty");
+        return;
+    }
     let encryptedPassword = encrypt(password, username);
      // Send the roll no. to the server
      fetch('https://z3myg583ti.execute-api.ap-south-1.amazonaws.com/default/smartexBE?queryType=authenticateAdmin', {

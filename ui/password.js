@@ -8,12 +8,12 @@ function changePassword(){
   let confirmPassword = document.getElementById('confirmPassword').value;
  
       // Validate the input values
-  if (id === "") {
+  if (guardID.length === 0) {
     alert("Please enter a valid ID !!!");
     return;
   }
 
-  if (newPassword.length == 0 || confirmPassword.length ==0) {
+  if (newPassword.length === 0 || confirmPassword.length === 0) {
     alert("Please enter a valid new password or confirm password !!!");
     return;
   }
@@ -53,11 +53,15 @@ function changePassword(){
   .then(response => response.json())
   .then(data => {
  
-      // Handle success or error response from server
-      // console.log(data);
- 
-       window.alert("Password updated successfully !!!");
-       window.location.href = 'admin_db.html';
+        // Handle success or error response from server
+        // console.log(data);
+        if(data.Attributes.password === encryptedPassword){
+            window.alert("Password updated successfully !!!");
+            window.location.href = 'admin_db.html';
+        }
+        else{
+            window.alert("Password updatation failed server error. Please try again !!!")
+        }
    })
  
   .catch(error => {

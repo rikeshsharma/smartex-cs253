@@ -36,6 +36,18 @@ function updateStudent(){
   let roomNo = document.getElementById("roomInput").value;
   let placeOfVisit = document.getElementById("placeInput").value;
   let guardId = document.getElementById("idInput").value;
+  if(hallNo.length === 0){
+    window.alert("Hall no field must not be empty");
+    return;
+  }
+  if(roomNo.length < 4){
+    window.alert("Please enter a correct Room-no");
+    return;
+  }
+  if(placeOfVisit.length === 0){
+    window.alert("Please enter place of visit to proceed");
+    return;
+  }
  // outTime=document.getElementById("timeInput").value;
   // console.log(rollNo);
 
@@ -140,6 +152,15 @@ function updateNonStudent(){
   address_1 += document.getElementById("roomInput").value;
   let placeOfVisit = document.getElementById("placeInput").value;
   let guardId=document.getElementById("idInput").value;
+
+  if(address_1.length === 0){
+    window.alert("Atleast one address line field must not be empty");
+    return;
+  }
+  if(placeOfVisit.length === 0){
+    window.alert("Please enter place of visit to proceed");
+    return;
+  }
  // outTime=document.getElementById("timeInput").value;
   // console.log(rollNo);
 

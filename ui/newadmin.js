@@ -6,9 +6,51 @@ function addNewAdmin(){
     let address = document.getElementById("addressInput").value;
     let phoneno = document.getElementById("phoneInput").value;
     let username = document.getElementById("usernameInput").value;
+
+    if(name.length === 0){
+        window.alert("Name field must not be empty");
+        return;
+    }
+    if(name.length < 2){
+        window.alert("Please enter a correct Name");
+        return;
+    }
+    if(ID.length < 4){
+        window.alert("The ID no. is too short, please enter atleast 4 character long ID no. to proceed");
+        return;
+    }
+    if(address.length === 0){
+        window.alert("Please enter address to proceed");
+        return;
+    }
+    if(username.length === 0){
+        window.length("Username field must not be empty");
+        return;
+    }
+    let phoneNumberPattern = /^\d{10}$/;
+	if(phoneno.match(phoneNumberPattern)){
+      
+    }
+    else{
+        window.alert("Enter a correct phone number");
+        return;
+    }
+
+
     let password = document.getElementById("passwordInput").value;
     let confirmPassword = document.getElementById("confirmPasswordInput").value;
     let accountType = document.getElementsByName("accountType");
+    let isAccountTypeFieldFilled = false;
+    for(let i = 0; i<accountType.length; i++){
+        // console.log(accountType[i].checked);
+        if(accountType[i].checked){
+            isAccountTypeFieldFilled = true;
+            break;
+        }
+    }
+    if(isAccountTypeFieldFilled == false){
+        window.alert("Account type: Guard or Admin must be checked");
+    }
     let type = "A";
     for(let i = 0; i<accountType.length; i++){
         // console.log(accountType[i].checked);
