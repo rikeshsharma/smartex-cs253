@@ -81,7 +81,7 @@ function submitForm() {
 		})
 		.then(response => response.json())
 		.then(data => {
-			console.log('adding in movement is success ')
+			// console.log('adding in movement is success ')
 			// console.log(data);
 			alert('student has entered the campus');
 			window.location.href="homepage.html";
@@ -111,8 +111,8 @@ function submitForm() {
 		})
 		.then(response => response.json())
 		.then(data => {
-			console.log('add exit data success');
-			console.log(data);
+			//console.log('add exit data success');
+			//console.log(data);
 			alert('Student has left the campus!!');
 			window.location.href="homepage.html";
 		})
