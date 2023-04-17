@@ -80,7 +80,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: grid;
     place-items: center;
-    background: url('propic.png')
+    background: url('profile pic logo.jpg')
       no-repeat center center/cover;
     position: relative;
     transition: all 1s;
