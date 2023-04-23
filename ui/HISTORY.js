@@ -67,9 +67,10 @@ function getData(){
                   tab += `<td id='time_${s_no}'>${data.Items[i].date.concat('_',data.Items[i].time)}</td>`;
                   // table.rows[i+1].cells[j].innerHTML = data.Items[i].exitTime;
                 
-                }            
-                tab += `<td><button type="button" class="btn btn-danger btn-sm" id="delete-form" onclick = "initializeDelete(${s_no})">Delete</button></td>
-                <td><button type="button" class="btn btn-primary btn-sm" id="edit-form" onclick="initializeEdit(${s_no})">Edit</button></td></tr>`;
+                } 
+
+                tab += `<td>Out</td><td><button type="button" class="btn btn-danger btn-sm" id="delete-form" onclick = "initializeDelete(${s_no})">Delete</button>
+                <button type="button" class="btn btn-primary btn-sm" id="edit-form" onclick="initializeEdit(${s_no})">Edit</button></td></tr>`;
                 ++s_no;
             }
             tbody.innerHTML += tab;
@@ -132,7 +133,7 @@ function getData(){
                 // table.rows[i+1].cells[j].innerHTML = data.Items[i].exitTime;
                 
               }            
-              tab += `<td><button type="button" class="btn btn-danger btn-sm" id="delete-form" onclick = "initializeDelete(${s_no})">Delete</button></td><td><button type="button" class="btn btn-primary btn-sm" id="edit-form" onclick = "initializeEdit(${s_no})">Edit</button></td>
+              tab += `<td>In</td><td><button type="button" class="btn btn-danger btn-sm" id="delete-form" onclick = "initializeDelete(${s_no})">Delete</button><button type="button" class="btn btn-primary btn-sm" id="edit-form" onclick = "initializeEdit(${s_no})">Edit</button></td>
               </tr>`;
               ++s_no;
           }
@@ -206,8 +207,8 @@ function getData(){
                   // table.rows[i+1].cells[j].innerHTML = data.Items[i].exitTime;
                 
                 }            
-                tab += `<td><button type="button" class="btn btn-danger btn-sm" id="delete-form" onclick = "initializeDelete(${s_no})">Delete</button></td>
-                <td><button type="button" class="btn btn-primary btn-sm" id="edit-form" onclick="initializeEdit(${s_no})">Edit</button></td></tr>`;
+                tab += `<td>Out</td><td><button type="button" class="btn btn-danger btn-sm" id="delete-form" onclick = "initializeDelete(${s_no})">Delete</button>
+                <button type="button" class="btn btn-primary btn-sm" id="edit-form" onclick="initializeEdit(${s_no})">Edit</button></td></tr>`;
                 ++s_no;
             }
             tbody.innerHTML += tab;
@@ -270,7 +271,7 @@ function getData(){
                 // table.rows[i+1].cells[j].innerHTML = data.Items[i].exitTime;
                 
               }            
-              tab += `<td><button type="button" class="btn btn-danger btn-sm" id="delete-form" onclick = "initializeDelete(${s_no})">Delete</button></td><td><button type="button" class="btn btn-primary btn-sm" id="edit-form" onclick = "initializeEdit(${s_no})">Edit</button></td>
+              tab += `<td>In</td><td><button type="button" class="btn btn-danger btn-sm" id="delete-form" onclick = "initializeDelete(${s_no})">Delete</button><button type="button" class="btn btn-primary btn-sm" id="edit-form" onclick = "initializeEdit(${s_no})">Edit</button></td>
               </tr>`;
               ++s_no;
           }
